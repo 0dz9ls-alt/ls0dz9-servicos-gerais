@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LS0DZ9 Serviços Gerais</title>
+
+  <style>
+    :root {
+      --azul: #0b1b30;
+      --azul-claro: #162b46;
+      --dourado: #d99a16;
+      --dourado-claro: #f0b63a;
+      --fundo: #f4f5f7;
+      --branco: #ffffff;
+      --texto: #172033;
+      --cinza: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: var(--fundo);
+      color: var(--texto);
+    }
+
+    .app {
+      max-width: 600px;
+      min-height: 100vh;
+      margin: auto;
+      background: var(--fundo);
+      padding-bottom: 30px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+      color: white;
+      padding: 28px 20px 32px;
+      border-radius: 0 0 28px 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 52px;
+      height: 52px;
+      border: 2px solid var(--dourado);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+
+    .logo h1 {
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+
+    .logo p {
+      color: var(--dourado-claro);
+      font-size: 12px;
+      margin-top: 4px;
+      letter-spacing: 1px;
+    }
+
+    .boas-vindas {
+      margin-top: 28px;
+    }
+
+    .boas-vindas h2 {
+      font-size: 22px;
+    }
+
+    .boas-vindas span {
+      color: var(--dourado-claro);
+    }
+
+    .boas-vindas p {
+      margin-top: 8px;
+      color: #d8dee8;
+      line-height: 1.5;
+    }
+
+    main {
+      padding: 22px 18px;
+    }
+
+    .titulo {
+      font-size: 19px;
+      margin-bottom: 16px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--branco);
+      border-radius: 18px;
+      padding: 20px 14px;
+      min-height: 150px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border: 1px solid #e8e8e8;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
+    .icone {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #fff4d7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 7px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: var(--cinza);
+      line-height: 1.4;
+    }
+
+    .destaque {
+      margin-top: 22px;
+      background: linear-gradient(135deg, var(--dourado), var(--dourado-claro));
+      border-radius: 18px;
+      padding: 20px;
+      color: var(--azul);
+    }
+
+    .destaque h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .destaque p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px 5px;
+      color: var(--cinza);
+      font-size: 11px;
+    }
+
+    .botao {
+      width: 100%;
+      margin-top: 15px;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: var(--azul);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header>
+      <div class="logo">
+        <div class="logo-icon">🏠</div>
+
+        <div>
+          <h1>LS0DZ9</h1>
+          <p>SERVIÇOS GERAIS</p>
+        </div>
+      </div>
+
+      <div class="boas-vindas">
+        <h2>Organize seus <span>serviços</span></h2>
+        <p>Crie orçamentos, cadastre clientes e acompanhe seus trabalhos em um só lugar.</p>
+      </div>
+    </header>
+
+    <main>
+
+      <h2 class="titulo">Menu principal</h2>
+
+      <div class="menu">
+
+        <div class="card" onclick="alert('Novo Orçamento será desenvolvido na próxima etapa')">
+          <div class="icone">➕</div>
+          <h3>Novo Orçamento</h3>
+          <p>Crie um orçamento para seu cliente.</p>
+        </div>
+
+        <div class="card" onclick="alert('Clientes será desenvolvido na próxima etapa')">
+          <div class="icone">👥</div>
+          <h3>Clientes</h3>
+          <p>Cadastre e organize seus clientes.</p>
+        </div>
+
+        <div class="card" onclick="alert('Serviços será desenvolvido na próxima etapa')">
+          <div class="icone">🛠️</div>
+          <h3>Serviços</h3>
+          <p>Gerencie os tipos de serviços.</p>
+        </div>
+
+        <div class="card" onclick="alert('Histórico será desenvolvido na próxima etapa')">
+          <div class="icone">📋</div>
+          <h3>Histórico</h3>
+          <p>Consulte seus orçamentos e serviços.</p>
+        </div>
+
+      </div>
+
+      <div class="destaque">
+        <h3>🏗️ Profissionalize seu trabalho</h3>
+        <p>Tenha mais organização e controle sobre seus serviços, clientes e orçamentos.</p>
+
+        <button class="botao" onclick="alert('Vamos criar esta função em breve!')">
+          Começar agora
+        </button>
+      </div>
+
+    </main>
+
+    <footer>
+      LS0DZ9 Serviços Gerais © 2026
+    </footer>
+
+  </div>
+
+</body>
+</html>
