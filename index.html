@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>LS0DZ9 Serviços Gerais</title>
+  <title>LS0DZ9</title>
 
   <style>
     :root {
@@ -1196,14 +1196,16 @@ Obrigado pela preferência!
 
   calcular();
 
-</script>
-function novoOrcamentoServico(servico) {
-  abrirTela('orcamento');
+<script>
 
-  document.getElementById('tipoServico').value = servico;
+  let orcamentoAtual = null;
 
-  window.scrollTo(0, 0);
-}
+  function novoOrcamentoServico(servico) {
+    document.getElementById('tipoServico').value = servico;
+    abrirTela('orcamento');
+  }
+
+  function abrirTela(id) {
   
 </body>
 </html>
