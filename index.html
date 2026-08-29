@@ -1,901 +1,1993 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>LS0DZ9 Serviços Gerais</title>
 
+  <!-- Biblioteca para gerar PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+
   <style>
+
     :root {
+
       --azul: #0b1b30;
       --azul-claro: #162b46;
       --dourado: #d99a16;
       --dourado-claro: #f0b63a;
       --fundo: #f4f5f7;
-      --branco: #ffffff;
       --texto: #172033;
       --cinza: #6b7280;
       --verde: #16824a;
       --vermelho: #b42318;
+
     }
 
+
     * {
+
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     }
+
 
     body {
+
       background: var(--fundo);
       color: var(--texto);
+
     }
 
+
     .app {
+
       max-width: 650px;
       min-height: 100vh;
       margin: auto;
       background: var(--fundo);
       padding-bottom: 30px;
+
     }
+
 
     header {
-      background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--azul),
+          var(--azul-claro)
+        );
+
       color: white;
-      padding: 28px 20px 32px;
-      border-radius: 0 0 28px 28px;
+
+      padding:
+        28px
+        20px
+        32px;
+
+      border-radius:
+        0
+        0
+        28px
+        28px;
+
     }
+
 
     .logo {
+
       display: flex;
       align-items: center;
       gap: 12px;
+
     }
+
 
     .logo-icon {
+
       width: 54px;
       height: 54px;
-      border: 2px solid var(--dourado);
+
+      border:
+        2px solid
+        var(--dourado);
+
       border-radius: 14px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-size: 27px;
+
     }
+
 
     .logo h1 {
+
       font-size: 25px;
       letter-spacing: 1px;
+
     }
+
 
     .logo p {
-      color: var(--dourado-claro);
+
+      color:
+        var(--dourado-claro);
+
       font-size: 12px;
+
       letter-spacing: 1px;
+
       margin-top: 4px;
+
     }
+
 
     .boas-vindas {
+
       margin-top: 25px;
+
     }
+
 
     .boas-vindas h2 {
+
       font-size: 22px;
+
     }
+
 
     .boas-vindas span {
-      color: var(--dourado-claro);
+
+      color:
+        var(--dourado-claro);
+
     }
+
 
     .boas-vindas p {
+
       margin-top: 8px;
+
       color: #d8dee8;
+
       line-height: 1.5;
+
     }
+
 
     main {
-      padding: 22px 18px;
+
+      padding:
+        22px
+        18px;
+
     }
+
 
     .tela {
+
       display: none;
+
     }
+
 
     .tela.ativa {
+
       display: block;
+
     }
+
 
     .titulo {
+
       font-size: 20px;
+
       margin-bottom: 16px;
+
     }
+
 
     .menu {
+
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
       gap: 12px;
+
     }
+
 
     .card {
+
       background: white;
+
       border-radius: 18px;
-      padding: 18px 12px;
+
+      padding:
+        18px
+        12px;
+
       min-height: 145px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.08);
-      border: 1px solid #e8e8e8;
+
+      box-shadow:
+        0 4px 14px
+        rgba(0,0,0,.08);
+
+      border:
+        1px solid #e8e8e8;
+
       cursor: pointer;
+
     }
+
 
     .card:active {
-      transform: scale(.97);
+
+      transform:
+        scale(.97);
+
     }
+
 
     .icone {
+
       width: 46px;
       height: 46px;
-      background: #fff4d7;
+
+      background:
+        #fff4d7;
+
       border-radius: 13px;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
+
       font-size: 24px;
+
       margin-bottom: 12px;
+
     }
+
 
     .card h3 {
+
       font-size: 14px;
+
       margin-bottom: 6px;
+
     }
+
 
     .card p {
+
       font-size: 11px;
+
       color: var(--cinza);
+
       line-height: 1.4;
+
     }
 
-    .destaque {
-      margin-top: 22px;
-      padding: 20px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, var(--dourado), var(--dourado-claro));
-      color: var(--azul);
-    }
-
-    .destaque h3 {
-      margin-bottom: 8px;
-    }
-
-    .destaque p {
-      font-size: 14px;
-      line-height: 1.5;
-    }
 
     .botao {
+
       width: 100%;
+
       padding: 14px;
+
       margin-top: 15px;
+
       border: none;
+
       border-radius: 12px;
-      background: var(--azul);
+
+      background:
+        var(--azul);
+
       color: white;
+
       font-size: 15px;
+
       font-weight: bold;
+
       cursor: pointer;
+
     }
+
 
     .botao:active {
-      transform: scale(.98);
+
+      transform:
+        scale(.98);
+
     }
+
 
     .botao-verde {
-      background: var(--verde);
+
+      background:
+        var(--verde);
+
     }
+
+
+    .botao-dourado {
+
+      background:
+        var(--dourado);
+
+      color:
+        var(--azul);
+
+    }
+
 
     .botao-secundario {
+
       background: white;
-      color: var(--azul);
-      border: 1px solid #d8dce2;
+
+      color:
+        var(--azul);
+
+      border:
+        1px solid #d8dce2;
+
     }
 
-    .botao-vermelho {
-      background: var(--vermelho);
-    }
 
     .voltar {
+
       border: none;
+
       background: transparent;
-      color: var(--azul);
+
+      color:
+        var(--azul);
+
       font-size: 15px;
+
       font-weight: bold;
+
       margin-bottom: 18px;
+
       cursor: pointer;
+
     }
+
 
     .formulario,
     .item-lista {
+
       background: white;
+
       padding: 20px;
+
       border-radius: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+
+      box-shadow:
+        0 4px 14px
+        rgba(0,0,0,.07);
+
     }
+
 
     .campo {
+
       margin-bottom: 16px;
+
     }
 
+
     .campo label {
+
       display: block;
+
       font-size: 14px;
+
       font-weight: bold;
+
       margin-bottom: 7px;
+
     }
+
 
     .campo input,
     .campo select,
     .campo textarea {
+
       width: 100%;
+
       padding: 14px;
-      border: 1px solid #d8dce2;
+
+      border:
+        1px solid #d8dce2;
+
       border-radius: 12px;
+
       font-size: 15px;
+
       background: white;
+
     }
 
+
     .campo textarea {
+
       min-height: 90px;
+
       resize: vertical;
+
     }
+
 
     .campo input:focus,
     .campo select:focus,
     .campo textarea:focus {
+
       outline: none;
-      border-color: var(--dourado);
+
+      border-color:
+        var(--dourado);
+
     }
+
 
     .resultado {
+
       margin-top: 20px;
-      background: var(--azul);
+
+      background:
+        var(--azul);
+
       color: white;
+
       padding: 20px;
+
       border-radius: 18px;
+
     }
+
 
     .resultado h3 {
-      color: var(--dourado-claro);
+
+      color:
+        var(--dourado-claro);
+
       margin-bottom: 14px;
+
     }
+
 
     .linha {
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 15px;
+
       margin: 10px 0;
+
       font-size: 14px;
+
     }
+
 
     .valor-final {
-      border-top: 1px solid #4a5b70;
+
+      border-top:
+        1px solid #4a5b70;
+
       padding-top: 15px;
+
       margin-top: 15px;
-      color: var(--dourado-claro);
+
+      color:
+        var(--dourado-claro);
+
       font-size: 18px;
+
       font-weight: bold;
+
     }
+
 
     .lista {
+
       display: flex;
+
       flex-direction: column;
+
       gap: 12px;
+
     }
+
 
     .item-lista h3 {
+
       font-size: 16px;
+
       margin-bottom: 7px;
+
     }
+
 
     .item-lista p {
-      color: var(--cinza);
+
+      color:
+        var(--cinza);
+
       font-size: 13px;
+
       line-height: 1.6;
+
     }
+
 
     .mini-valor {
-      color: var(--verde) !important;
+
+      color:
+        var(--verde) !important;
+
       font-weight: bold;
+
       margin-top: 8px;
+
     }
+
 
     .botoes-item {
+
       display: flex;
+
       gap: 8px;
+
       margin-top: 14px;
+
     }
+
 
     .botao-pequeno {
+
       flex: 1;
+
       padding: 10px;
+
       border: none;
+
       border-radius: 10px;
+
       font-weight: bold;
+
       cursor: pointer;
+
     }
+
 
     .btn-ver {
-      background: var(--azul);
+
+      background:
+        var(--azul);
+
       color: white;
+
     }
+
+
+    .btn-editar {
+
+      background:
+        #fff4d7;
+
+      color:
+        #805600;
+
+    }
+
 
     .btn-excluir {
-      background: #fff0f0;
-      color: var(--vermelho);
+
+      background:
+        #fff0f0;
+
+      color:
+        var(--vermelho);
+
     }
+
 
     .vazio {
+
       text-align: center;
-      color: var(--cinza);
+
+      color:
+        var(--cinza);
+
       padding: 30px;
+
     }
 
-    /* VISUALIZAÇÃO INTERNA */
 
     .documento {
+
       background: white;
+
       border-radius: 18px;
+
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,.09);
+
+      box-shadow:
+        0 4px 16px
+        rgba(0,0,0,.09);
+
     }
+
 
     .doc-topo {
-      background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--azul),
+          var(--azul-claro)
+        );
+
       color: white;
+
       padding: 22px;
+
     }
+
 
     .doc-topo h2 {
+
       font-size: 24px;
+
     }
+
 
     .doc-topo p {
-      color: var(--dourado-claro);
+
+      color:
+        var(--dourado-claro);
+
       font-size: 12px;
+
       letter-spacing: 1px;
+
       margin-top: 5px;
+
     }
+
 
     .doc-numero {
+
       margin-top: 18px;
+
       padding: 12px;
+
       border-radius: 12px;
-      background: rgba(255,255,255,.1);
+
+      background:
+        rgba(255,255,255,.1);
+
     }
+
 
     .doc-corpo {
+
       padding: 20px;
+
     }
+
 
     .doc-secao {
+
       margin-bottom: 22px;
+
     }
+
 
     .doc-secao h3 {
-      color: var(--azul);
+
+      color:
+        var(--azul);
+
       font-size: 15px;
+
       padding-bottom: 8px;
+
       margin-bottom: 10px;
-      border-bottom: 2px solid var(--dourado);
+
+      border-bottom:
+        2px solid
+        var(--dourado);
+
     }
+
 
     .doc-linha {
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 12px;
+
       padding: 9px 0;
-      border-bottom: 1px solid #eeeeee;
+
+      border-bottom:
+        1px solid #eeeeee;
+
       font-size: 14px;
+
     }
+
 
     .doc-linha span {
-      color: var(--cinza);
+
+      color:
+        var(--cinza);
+
     }
+
 
     .descricao-doc {
+
       line-height: 1.6;
+
       font-size: 14px;
+
     }
+
 
     .total-doc {
-      background: #fff4d7;
-      border: 2px solid var(--dourado);
+
+      background:
+        #fff4d7;
+
+      border:
+        2px solid
+        var(--dourado);
+
       border-radius: 14px;
+
       padding: 18px;
+
       display: flex;
-      justify-content: space-between;
+
+      justify-content:
+        space-between;
+
       gap: 15px;
+
       align-items: center;
+
     }
+
 
     .total-doc strong {
+
       font-size: 22px;
-      color: var(--azul);
+
+      color:
+        var(--azul);
+
     }
+
 
     .rodape-doc {
+
       text-align: center;
+
       padding: 16px;
-      background: #f8f8f8;
-      color: var(--cinza);
+
+      background:
+        #f8f8f8;
+
+      color:
+        var(--cinza);
+
       font-size: 12px;
+
     }
+
 
     footer {
+
       text-align: center;
-      padding: 20px 10px 5px;
-      color: var(--cinza);
+
+      padding:
+        20px
+        10px
+        5px;
+
+      color:
+        var(--cinza);
+
       font-size: 11px;
+
     }
+
 
     @media (max-width: 500px) {
+
       .menu {
+
         grid-template-columns: 1fr;
+
       }
 
+
       .total-doc {
+
         flex-direction: column;
+
         align-items: flex-start;
+
       }
+
     }
+
   </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
+
   <header>
+
     <div class="logo">
-      <div class="logo-icon">🏠</div>
-      <div>
-        <h1>LS0DZ9</h1>
-        <p>SERVIÇOS GERAIS</p>
+
+      <div class="logo-icon">
+        🏠
       </div>
+
+      <div>
+
+        <h1>
+          LS0DZ9
+        </h1>
+
+        <p>
+          SERVIÇOS GERAIS
+        </p>
+
+      </div>
+
     </div>
 
+
     <div class="boas-vindas">
-      <h2>Seu controle <span>profissional</span></h2>
-      <p>Crie orçamentos, controle seus custos e organize seus clientes.</p>
+
+      <h2>
+        Seu controle
+        <span>
+          profissional
+        </span>
+      </h2>
+
+      <p>
+        Crie orçamentos, controle seus custos e organize seus clientes.
+      </p>
+
     </div>
+
   </header>
+
 
   <main>
 
-    <!-- INÍCIO -->
-    <section id="inicio" class="tela ativa">
 
-      <h2 class="titulo">Menu principal</h2>
+    <!-- INÍCIO -->
+
+    <section
+      id="inicio"
+      class="tela ativa"
+    >
+
+      <h2 class="titulo">
+        Menu principal
+      </h2>
+
 
       <div class="menu">
 
-        <div class="card" onclick="abrirTela('orcamento')">
-          <div class="icone">➕</div>
-          <h3>Novo Orçamento</h3>
-          <p>Crie e calcule um novo orçamento.</p>
+
+        <div
+          class="card"
+          onclick="abrirTela('orcamento')"
+        >
+
+          <div class="icone">
+            ➕
+          </div>
+
+          <h3>
+            Novo Orçamento
+          </h3>
+
+          <p>
+            Crie e calcule um novo orçamento.
+          </p>
+
         </div>
 
-        <div class="card" onclick="abrirTela('clientes')">
-          <div class="icone">👥</div>
-          <h3>Clientes</h3>
-          <p>Cadastre e organize seus clientes.</p>
+
+        <div
+          class="card"
+          onclick="abrirTela('clientes')"
+        >
+
+          <div class="icone">
+            👥
+          </div>
+
+          <h3>
+            Clientes
+          </h3>
+
+          <p>
+            Cadastre e organize seus clientes.
+          </p>
+
         </div>
 
-        <div class="card" onclick="abrirTela('historico')">
-          <div class="icone">📋</div>
-          <h3>Histórico</h3>
-          <p>Consulte seus orçamentos salvos.</p>
+
+        <div
+          class="card"
+          onclick="abrirTela('historico')"
+        >
+
+          <div class="icone">
+            📋
+          </div>
+
+          <h3>
+            Histórico
+          </h3>
+
+          <p>
+            Consulte seus orçamentos salvos.
+          </p>
+
         </div>
+
 
       </div>
 
     </section>
 
-    <!-- NOVO ORÇAMENTO -->
-    <section id="orcamento" class="tela">
 
-      <button class="voltar" onclick="abrirTela('inicio')">
+
+    <!-- NOVO ORÇAMENTO -->
+
+    <section
+      id="orcamento"
+      class="tela"
+    >
+
+      <button
+        class="voltar"
+        onclick="abrirTela('inicio')"
+      >
         ← Voltar ao início
       </button>
 
-      <h2 class="titulo">➕ Novo Orçamento</h2>
+
+      <h2 class="titulo">
+        ➕ Novo Orçamento
+      </h2>
+
 
       <div class="formulario">
 
-        <div class="campo">
-          <label>Nome do cliente</label>
-          <input type="text" id="cliente" placeholder="Digite o nome do cliente">
-        </div>
 
         <div class="campo">
-          <label>Tipo de serviço</label>
-          <select id="tipoServico">
-            <option value="">Selecione o serviço</option>
-            <option>Pintura</option>
-            <option>Alvenaria</option>
-            <option>Elétrica</option>
-            <option>Hidráulica</option>
-            <option>Pisos e Revestimentos</option>
-            <option>Gesso e Drywall</option>
-            <option>Reformas Gerais</option>
-            <option>Manutenção</option>
-            <option>Outro Serviço</option>
+
+          <label>
+            Nome do cliente
+          </label>
+
+
+          <input
+            type="text"
+            id="cliente"
+            list="listaClientesOrcamento"
+            placeholder="Digite ou selecione um cliente"
+            autocomplete="off"
+          >
+
+
+          <datalist
+            id="listaClientesOrcamento"
+          ></datalist>
+
+        </div>
+
+
+
+        <div class="campo">
+
+          <label>
+            Tipo de serviço
+          </label>
+
+
+          <select
+            id="tipoServico"
+          >
+
+            <option value="">
+              Selecione o serviço
+            </option>
+
+            <option>
+              Pintura
+            </option>
+
+            <option>
+              Alvenaria
+            </option>
+
+            <option>
+              Elétrica
+            </option>
+
+            <option>
+              Hidráulica
+            </option>
+
+            <option>
+              Pisos e Revestimentos
+            </option>
+
+            <option>
+              Gesso e Drywall
+            </option>
+
+            <option>
+              Reformas Gerais
+            </option>
+
+            <option>
+              Manutenção
+            </option>
+
+            <option>
+              Outro Serviço
+            </option>
+
           </select>
+
         </div>
 
-        <div class="campo">
-          <label>Descrição do serviço</label>
-          <textarea id="descricao" placeholder="Descreva o serviço que será realizado"></textarea>
-        </div>
+
 
         <div class="campo">
-          <label>Quantidade ou área</label>
-          <input type="text" id="quantidade" placeholder="Exemplo: 50 m²">
+
+          <label>
+            Descrição do serviço
+          </label>
+
+
+          <textarea
+            id="descricao"
+            placeholder="Descreva o serviço que será realizado"
+          ></textarea>
+
         </div>
 
-        <div class="campo">
-          <label>Valor da mão de obra (R$)</label>
-          <input type="number" id="maoObra" step="0.01" oninput="calcular()">
-        </div>
+
 
         <div class="campo">
-          <label>Valor dos materiais (R$)</label>
-          <input type="number" id="materiais" step="0.01" oninput="calcular()">
+
+          <label>
+            Quantidade ou área
+          </label>
+
+
+          <input
+            type="text"
+            id="quantidade"
+            placeholder="Exemplo: 50 m²"
+          >
+
         </div>
 
-        <div class="campo">
-          <label>Outros custos (R$)</label>
-          <input type="number" id="outros" step="0.01" oninput="calcular()">
-        </div>
+
 
         <div class="campo">
-          <label>Lucro desejado (%) — uso interno</label>
-          <input type="number" id="lucro" value="20" step="1" oninput="calcular()">
+
+          <label>
+            Valor da mão de obra (R$)
+          </label>
+
+
+          <input
+            type="number"
+            id="maoObra"
+            step="0.01"
+            oninput="calcular()"
+          >
+
         </div>
+
+
+
+        <div class="campo">
+
+          <label>
+            Valor dos materiais (R$)
+          </label>
+
+
+          <input
+            type="number"
+            id="materiais"
+            step="0.01"
+            oninput="calcular()"
+          >
+
+        </div>
+
+
+
+        <div class="campo">
+
+          <label>
+            Outros custos (R$)
+          </label>
+
+
+          <input
+            type="number"
+            id="outros"
+            step="0.01"
+            oninput="calcular()"
+          >
+
+        </div>
+
+
+
+        <div class="campo">
+
+          <label>
+            Lucro desejado (%) — uso interno
+          </label>
+
+
+          <input
+            type="number"
+            id="lucro"
+            value="20"
+            step="1"
+            oninput="calcular()"
+          >
+
+        </div>
+
+
 
         <div class="resultado">
-          <h3>💰 Resumo interno</h3>
+
+          <h3>
+            💰 Resumo interno
+          </h3>
+
 
           <div class="linha">
-            <span>Custo total:</span>
-            <strong id="custoTotal">R$ 0,00</strong>
+
+            <span>
+              Custo total:
+            </span>
+
+            <strong id="custoTotal">
+              R$ 0,00
+            </strong>
+
           </div>
 
+
           <div class="linha">
-            <span>Seu lucro:</span>
-            <strong id="valorLucro">R$ 0,00</strong>
+
+            <span>
+              Seu lucro:
+            </span>
+
+            <strong id="valorLucro">
+              R$ 0,00
+            </strong>
+
           </div>
+
 
           <div class="linha valor-final">
-            <span>VALOR PARA O CLIENTE:</span>
-            <strong id="valorFinal">R$ 0,00</strong>
+
+            <span>
+              VALOR PARA O CLIENTE:
+            </span>
+
+            <strong id="valorFinal">
+              R$ 0,00
+            </strong>
+
           </div>
+
         </div>
 
-        <button class="botao botao-verde" onclick="salvarOrcamento()">
+
+
+        <button
+          class="botao botao-verde"
+          onclick="salvarOrcamento()"
+        >
           💾 Salvar orçamento
         </button>
 
-        <button class="botao botao-secundario" onclick="limparFormulario()">
+
+        <button
+          class="botao botao-secundario"
+          onclick="limparFormulario()"
+        >
           Limpar dados
         </button>
 
+
       </div>
+
     </section>
 
-    <!-- CLIENTES -->
-    <section id="clientes" class="tela">
 
-      <button class="voltar" onclick="abrirTela('inicio')">
+
+    <!-- CLIENTES -->
+
+    <section
+      id="clientes"
+      class="tela"
+    >
+
+      <button
+        class="voltar"
+        onclick="abrirTela('inicio')"
+      >
         ← Voltar ao início
       </button>
 
-      <h2 class="titulo">👥 Clientes</h2>
+
+      <h2 class="titulo">
+        👥 Clientes
+      </h2>
+
 
       <div class="formulario">
 
-        <div class="campo">
-          <label>Nome do cliente</label>
-          <input type="text" id="novoCliente" placeholder="Digite o nome">
-        </div>
 
         <div class="campo">
-          <label>Telefone</label>
-          <input type="tel" id="telefoneCliente" placeholder="(00) 00000-0000">
+
+          <label>
+            Nome do cliente
+          </label>
+
+          <input
+            type="text"
+            id="novoCliente"
+            placeholder="Digite o nome"
+          >
+
         </div>
 
-        <button class="botao" onclick="salvarCliente()">
+
+        <div class="campo">
+
+          <label>
+            Telefone
+          </label>
+
+          <input
+            type="tel"
+            id="telefoneCliente"
+            placeholder="(00) 00000-0000"
+          >
+
+        </div>
+
+
+        <button
+          class="botao"
+          onclick="salvarCliente()"
+        >
           Adicionar cliente
         </button>
 
+
       </div>
+
 
       <br>
 
-      <div id="listaClientes" class="lista"></div>
+
+      <div
+        id="listaClientes"
+        class="lista"
+      ></div>
+
 
     </section>
 
-    <!-- HISTÓRICO -->
-    <section id="historico" class="tela">
 
-      <button class="voltar" onclick="abrirTela('inicio')">
+
+    <!-- HISTÓRICO -->
+
+    <section
+      id="historico"
+      class="tela"
+    >
+
+      <button
+        class="voltar"
+        onclick="abrirTela('inicio')"
+      >
         ← Voltar ao início
       </button>
 
-      <h2 class="titulo">📋 Histórico</h2>
 
-      <div id="listaOrcamentos" class="lista"></div>
+      <h2 class="titulo">
+        📋 Histórico
+      </h2>
 
-      <button class="botao botao-secundario" onclick="limparHistorico()">
+
+      <div
+        id="listaOrcamentos"
+        class="lista"
+      ></div>
+
+
+      <button
+        class="botao botao-secundario"
+        onclick="limparHistorico()"
+      >
         Limpar todo o histórico
       </button>
 
+
     </section>
 
-    <!-- VISUALIZAÇÃO INTERNA -->
-    <section id="visualizar" class="tela">
 
-      <button class="voltar" onclick="abrirTela('historico')">
+
+    <!-- VISUALIZAR -->
+
+    <section
+      id="visualizar"
+      class="tela"
+    >
+
+      <button
+        class="voltar"
+        onclick="abrirTela('historico')"
+      >
         ← Voltar ao histórico
       </button>
 
-      <h2 class="titulo">🧾 Resumo do Orçamento</h2>
 
-      <div id="documentoOrcamento"></div>
+      <h2 class="titulo">
+        🧾 Resumo do Orçamento
+      </h2>
 
-      <button class="botao botao-verde" onclick="compartilharWhatsApp()">
+
+      <div
+        id="documentoOrcamento"
+      ></div>
+
+
+      <button
+        class="botao botao-dourado"
+        onclick="gerarPDF()"
+      >
+        📄 Gerar PDF profissional
+      </button>
+
+
+      <button
+        class="botao botao-verde"
+        onclick="compartilharWhatsApp()"
+      >
         💬 Enviar orçamento pelo WhatsApp
       </button>
 
-      <button class="botao" onclick="compartilharOrcamento()">
+
+      <button
+        class="botao"
+        onclick="compartilharOrcamento()"
+      >
         📤 Compartilhar orçamento
       </button>
 
+
     </section>
+
 
   </main>
 
+
   <footer>
+
     LS0DZ9 Serviços Gerais © 2026
+
   </footer>
+
 
 </div>
 
+
+
 <script>
+
 
 let orcamentoAtual = null;
 
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
 function abrirTela(id) {
 
-  document.querySelectorAll('.tela').forEach(function(tela) {
-    tela.classList.remove('ativa');
-  });
+  document
+    .querySelectorAll('.tela')
+    .forEach(function(tela) {
 
-  document.getElementById(id).classList.add('ativa');
+      tela.classList.remove('ativa');
 
-  if (id === 'historico') carregarOrcamentos();
-  if (id === 'clientes') carregarClientes();
+    });
 
-  window.scrollTo(0, 0);
+
+  document
+    .getElementById(id)
+    .classList.add('ativa');
+
+
+  if (id === 'historico')
+    carregarOrcamentos();
+
+
+  if (id === 'clientes')
+    carregarClientes();
+
+
+  if (id === 'orcamento')
+    carregarClientesNoOrcamento();
+
+
+  window.scrollTo(
+    0,
+    0
+  );
+
 }
+
+
+/* =========================
+   FUNÇÕES BÁSICAS
+========================= */
 
 function moeda(valor) {
-  return Number(valor || 0).toLocaleString('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  });
+
+  return Number(valor || 0)
+    .toLocaleString(
+      'pt-BR',
+      {
+        style: 'currency',
+        currency: 'BRL'
+      }
+    );
+
 }
 
+
 function valorCampo(id) {
-  return parseFloat(document.getElementById(id).value) || 0;
+
+  return parseFloat(
+    document
+      .getElementById(id)
+      .value
+  ) || 0;
+
 }
+
 
 function calcular() {
 
-  const maoObra = valorCampo('maoObra');
-  const materiais = valorCampo('materiais');
-  const outros = valorCampo('outros');
-  const percentualLucro = valorCampo('lucro');
+  const maoObra =
+    valorCampo('maoObra');
 
-  const custoTotal = maoObra + materiais + outros;
-  const valorLucro = custoTotal * (percentualLucro / 100);
-  const valorFinal = custoTotal + valorLucro;
 
-  document.getElementById('custoTotal').textContent = moeda(custoTotal);
-  document.getElementById('valorLucro').textContent = moeda(valorLucro);
-  document.getElementById('valorFinal').textContent = moeda(valorFinal);
+  const materiais =
+    valorCampo('materiais');
+
+
+  const outros =
+    valorCampo('outros');
+
+
+  const percentualLucro =
+    valorCampo('lucro');
+
+
+  const custoTotal =
+    maoObra +
+    materiais +
+    outros;
+
+
+  const valorLucro =
+    custoTotal *
+    (percentualLucro / 100);
+
+
+  const valorFinal =
+    custoTotal +
+    valorLucro;
+
+
+  document
+    .getElementById('custoTotal')
+    .textContent =
+      moeda(custoTotal);
+
+
+  document
+    .getElementById('valorLucro')
+    .textContent =
+      moeda(valorLucro);
+
+
+  document
+    .getElementById('valorFinal')
+    .textContent =
+      moeda(valorFinal);
+
 }
+
 
 function gerarNumeroOrcamento() {
-  const ano = new Date().getFullYear();
-  const numero = Math.floor(1000 + Math.random() * 9000);
-  return 'LS-' + ano + '-' + numero;
+
+  const ano =
+    new Date()
+      .getFullYear();
+
+
+  const numero =
+    Math.floor(
+      1000 +
+      Math.random() *
+      9000
+    );
+
+
+  return 'LS-' +
+    ano +
+    '-' +
+    numero;
+
 }
+
+
+/* =========================
+   SALVAR ORÇAMENTO
+========================= */
 
 function salvarOrcamento() {
 
-  const cliente = document.getElementById('cliente').value.trim();
-  const tipoServico = document.getElementById('tipoServico').value;
+  const cliente =
+    document
+      .getElementById('cliente')
+      .value
+      .trim();
 
-  if (!cliente || !tipoServico) {
-    alert('Preencha o nome do cliente e o tipo de serviço.');
+
+  const tipoServico =
+    document
+      .getElementById('tipoServico')
+      .value;
+
+
+  if (
+    !cliente ||
+    !tipoServico
+  ) {
+
+    alert(
+      'Preencha o nome do cliente e o tipo de serviço.'
+    );
+
     return;
+
   }
 
-  const maoObra = valorCampo('maoObra');
-  const materiais = valorCampo('materiais');
-  const outros = valorCampo('outros');
-  const percentualLucro = valorCampo('lucro');
 
-  const custoTotal = maoObra + materiais + outros;
-  const valorLucro = custoTotal * (percentualLucro / 100);
-  const valorFinal = custoTotal + valorLucro;
+  const maoObra =
+    valorCampo('maoObra');
 
-  const agora = new Date();
+
+  const materiais =
+    valorCampo('materiais');
+
+
+  const outros =
+    valorCampo('outros');
+
+
+  const percentualLucro =
+    valorCampo('lucro');
+
+
+  const custoTotal =
+    maoObra +
+    materiais +
+    outros;
+
+
+  const valorLucro =
+    custoTotal *
+    (percentualLucro / 100);
+
+
+  const valorFinal =
+    custoTotal +
+    valorLucro;
+
+
+  const agora =
+    new Date();
+
 
   const orcamento = {
-    id: Date.now(),
-    numero: gerarNumeroOrcamento(),
-    data: agora.toLocaleDateString('pt-BR'),
-    hora: agora.toLocaleTimeString('pt-BR', {
-      hour: '2-digit',
-      minute: '2-digit'
-    }),
-    cliente: cliente,
-    tipoServico: tipoServico,
-    descricao: document.getElementById('descricao').value.trim(),
-    quantidade: document.getElementById('quantidade').value.trim(),
-    maoObra: maoObra,
-    materiais: materiais,
-    outros: outros,
-    custoTotal: custoTotal,
-    lucroPercentual: percentualLucro,
-    lucro: valorLucro,
-    valorFinal: valorFinal
+
+    id:
+      Date.now(),
+
+    numero:
+      gerarNumeroOrcamento(),
+
+    data:
+      agora.toLocaleDateString(
+        'pt-BR'
+      ),
+
+    hora:
+      agora.toLocaleTimeString(
+        'pt-BR',
+        {
+          hour: '2-digit',
+          minute: '2-digit'
+        }
+      ),
+
+    cliente:
+      cliente,
+
+    tipoServico:
+      tipoServico,
+
+    descricao:
+      document
+        .getElementById('descricao')
+        .value
+        .trim(),
+
+    quantidade:
+      document
+        .getElementById('quantidade')
+        .value
+        .trim(),
+
+    maoObra:
+      maoObra,
+
+    materiais:
+      materiais,
+
+    outros:
+      outros,
+
+    custoTotal:
+      custoTotal,
+
+    lucroPercentual:
+      percentualLucro,
+
+    lucro:
+      valorLucro,
+
+    valorFinal:
+      valorFinal
+
   };
 
-  const historico = JSON.parse(
-    localStorage.getItem('orcamentosLS0DZ9') || '[]'
+
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        'orcamentosLS0DZ9'
+      ) || '[]'
+    );
+
+
+  historico.unshift(
+    orcamento
   );
 
-  historico.unshift(orcamento);
 
   localStorage.setItem(
     'orcamentosLS0DZ9',
-    JSON.stringify(historico)
+    JSON.stringify(
+      historico
+    )
   );
+
 
   limparFormulario();
 
-  visualizarOrcamento(orcamento.id);
+
+  visualizarOrcamento(
+    orcamento.id
+  );
+
 }
+
+
+/* =========================
+   VISUALIZAR ORÇAMENTO
+========================= */
 
 function visualizarOrcamento(id) {
 
-  const historico = JSON.parse(
-    localStorage.getItem('orcamentosLS0DZ9') || '[]'
-  );
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        'orcamentosLS0DZ9'
+      ) || '[]'
+    );
 
-  const item = historico.find(function(orcamento) {
-    return orcamento.id === id;
-  });
+
+  const item =
+    historico.find(
+      function(orcamento) {
+
+        return orcamento.id === id;
+
+      }
+    );
+
 
   if (!item) {
-    alert('Orçamento não encontrado.');
+
+    alert(
+      'Orçamento não encontrado.'
+    );
+
     return;
+
   }
 
-  orcamentoAtual = item;
 
-  document.getElementById('documentoOrcamento').innerHTML = `
+  orcamentoAtual =
+    item;
 
-    <div class="documento">
 
-      <div class="doc-topo">
-        <h2>LS0DZ9</h2>
-        <p>SERVIÇOS GERAIS</p>
+  document
+    .getElementById(
+      'documentoOrcamento'
+    )
+    .innerHTML = `
 
-        <div class="doc-numero">
-          <strong>ORÇAMENTO Nº ${item.numero}</strong>
-          <br>
-          <small>${item.data} às ${item.hora}</small>
-        </div>
-      </div>
+      <div class="documento">
 
-      <div class="doc-corpo">
+        <div class="doc-topo">
 
-        <div class="doc-secao">
-          <h3>👤 CLIENTE</h3>
+          <h2>
+            LS0DZ9
+          </h2>
 
-          <div class="doc-linha">
-            <span>Nome</span>
-            <strong>${item.cliente}</strong>
+          <p>
+            SERVIÇOS GERAIS
+          </p>
+
+          <div class="doc-numero">
+
+            <strong>
+              ORÇAMENTO Nº
+              ${item.numero}
+            </strong>
+
+            <br>
+
+            <small>
+              ${item.data}
+              às
+              ${item.hora}
+            </small>
+
           </div>
+
         </div>
 
-        <div class="doc-secao">
-          <h3>🛠️ SERVIÇO</h3>
 
-          <div class="doc-linha">
-            <span>Tipo</span>
-            <strong>${item.tipoServico}</strong>
-          </div>
+        <div class="doc-corpo">
 
-          ${item.quantidade ? `
+
+          <div class="doc-secao">
+
+            <h3>
+              👤 CLIENTE
+            </h3>
+
+
             <div class="doc-linha">
-              <span>Quantidade / Área</span>
-              <strong>${item.quantidade}</strong>
+
+              <span>
+                Nome
+              </span>
+
+              <strong>
+                ${item.cliente}
+              </strong>
+
             </div>
-          ` : ''}
 
-          ${item.descricao ? `
-            <p class="descricao-doc">
-              ${item.descricao}
-            </p>
-          ` : ''}
+          </div>
+
+
+
+          <div class="doc-secao">
+
+            <h3>
+              🛠️ SERVIÇO
+            </h3>
+
+
+            <div class="doc-linha">
+
+              <span>
+                Tipo
+              </span>
+
+              <strong>
+                ${item.tipoServico}
+              </strong>
+
+            </div>
+
+
+            ${
+              item.quantidade
+              ? `
+
+                <div class="doc-linha">
+
+                  <span>
+                    Quantidade / Área
+                  </span>
+
+                  <strong>
+                    ${item.quantidade}
+                  </strong>
+
+                </div>
+
+              `
+              : ''
+            }
+
+
+            ${
+              item.descricao
+              ? `
+
+                <p class="descricao-doc">
+                  ${item.descricao}
+                </p>
+
+              `
+              : ''
+            }
+
+
+          </div>
+
+
+
+          <div class="total-doc">
+
+            <span>
+              VALOR PARA O CLIENTE
+            </span>
+
+            <strong>
+              ${moeda(item.valorFinal)}
+            </strong>
+
+          </div>
+
+
         </div>
 
-        <div class="doc-secao">
-          <h3>💰 CONTROLE INTERNO</h3>
 
-          <div class="doc-linha">
-            <span>Mão de obra</span>
-            <strong>${moeda(item.maoObra)}</strong>
-          </div>
+        <div class="rodape-doc">
 
-          <div class="doc-linha">
-            <span>Materiais</span>
-            <strong>${moeda(item.materiais)}</strong>
-          </div>
+          LS0DZ9 Serviços Gerais
 
-          <div class="doc-linha">
-            <span>Outros custos</span>
-            <strong>${moeda(item.outros)}</strong>
-          </div>
+          <br>
 
-          <div class="doc-linha">
-            <span>Seu lucro</span>
-            <strong>${moeda(item.lucro)}</strong>
-          </div>
+          Orçamento elaborado profissionalmente.
+
         </div>
 
-        <div class="total-doc">
-          <span>VALOR PARA O CLIENTE</span>
-          <strong>${moeda(item.valorFinal)}</strong>
-        </div>
 
       </div>
 
-      <div class="rodape-doc">
-        LS0DZ9 Serviços Gerais<br>
-        Orçamento elaborado profissionalmente.
-      </div>
-
-    </div>
   `;
 
-  abrirTela('visualizar');
+
+  abrirTela(
+    'visualizar'
+  );
+
 }
+
+
+/* =========================
+   WHATSAPP
+========================= */
 
 function textoWhatsApp() {
 
-  if (!orcamentoAtual) return '';
+  if (!orcamentoAtual)
+    return '';
+
 
   return `*LS0DZ9 SERVIÇOS GERAIS*
 
 🧾 *ORÇAMENTO Nº ${orcamentoAtual.numero}*
 
 👤 *Cliente:* ${orcamentoAtual.cliente}
+
 🛠️ *Serviço:* ${orcamentoAtual.tipoServico}
+
 📅 *Data:* ${orcamentoAtual.data}
 
 ${orcamentoAtual.quantidade ? `📐 *Quantidade/Área:* ${orcamentoAtual.quantidade}\n` : ''}
@@ -905,203 +1997,1464 @@ ${orcamentoAtual.descricao ? `📝 *Descrição:* ${orcamentoAtual.descricao}\n\
 ━━━━━━━━━━━━━━
 
 💵 *VALOR TOTAL DO ORÇAMENTO:*
+
 *${moeda(orcamentoAtual.valorFinal)}*
 
 Obrigado pela preferência!
 
 *LS0DZ9 Serviços Gerais*`;
+
 }
+
 
 function compartilharWhatsApp() {
 
-  if (!orcamentoAtual) return;
+  if (!orcamentoAtual)
+    return;
 
-  const texto = encodeURIComponent(textoWhatsApp());
+
+  const texto =
+    encodeURIComponent(
+      textoWhatsApp()
+    );
+
 
   window.open(
-    'https://wa.me/?text=' + texto,
+    'https://wa.me/?text=' +
+    texto,
     '_blank'
   );
+
 }
+
+
+/* =========================
+   COMPARTILHAR
+========================= */
 
 function compartilharOrcamento() {
 
-  const texto = textoWhatsApp();
+  const texto =
+    textoWhatsApp();
+
 
   if (navigator.share) {
+
     navigator.share({
-      title: 'Orçamento LS0DZ9 Serviços Gerais',
-      text: texto
-    }).catch(function() {});
+
+      title:
+        'Orçamento LS0DZ9 Serviços Gerais',
+
+      text:
+        texto
+
+    })
+    .catch(
+      function() {}
+    );
+
   } else {
-    navigator.clipboard.writeText(texto)
-      .then(function() {
-        alert('Orçamento copiado.');
-      });
+
+    navigator.clipboard
+      .writeText(texto)
+
+      .then(
+        function() {
+
+          alert(
+            'Orçamento copiado.'
+          );
+
+        }
+      );
+
   }
+
 }
+
+
+/* =====================================================
+   GERAR PDF PROFISSIONAL
+   COM A LOGO LS0DZ9
+===================================================== */
+
+async function gerarPDF() {
+
+  if (!orcamentoAtual) {
+
+    alert(
+      'Nenhum orçamento selecionado.'
+    );
+
+    return;
+
+  }
+
+
+  if (
+    !window.jspdf ||
+    !window.jspdf.jsPDF
+  ) {
+
+    alert(
+      'Não foi possível carregar o gerador de PDF. Verifique sua conexão com a internet.'
+    );
+
+    return;
+
+  }
+
+
+  /*
+    A LOGO DEVE ESTAR NA MESMA PASTA
+    DO index.html.
+
+    Nome obrigatório:
+
+    logo.png
+  */
+
+  function carregarLogo() {
+
+    return new Promise(
+      function(resolve, reject) {
+
+        const imagem =
+          new Image();
+
+
+        imagem.onload =
+          function() {
+
+            resolve(
+              imagem
+            );
+
+          };
+
+
+        imagem.onerror =
+          function() {
+
+            reject(
+              new Error(
+                'Não foi possível carregar a logo.'
+              )
+            );
+
+          };
+
+
+        imagem.src =
+          './logo.png';
+
+      }
+    );
+
+  }
+
+
+  let logo;
+
+
+  try {
+
+    logo =
+      await carregarLogo();
+
+  } catch (erro) {
+
+    alert(
+      'A logo não foi encontrada.\n\n' +
+      'Verifique se o arquivo "logo.png" está na mesma pasta do index.html no GitHub.'
+    );
+
+    return;
+
+  }
+
+
+  const {
+    jsPDF
+  } =
+    window.jspdf;
+
+
+  const pdf =
+    new jsPDF({
+
+      orientation:
+        'portrait',
+
+      unit:
+        'mm',
+
+      format:
+        'a4'
+
+    });
+
+
+  const largura =
+    pdf.internal
+      .pageSize
+      .getWidth();
+
+
+  const altura =
+    pdf.internal
+      .pageSize
+      .getHeight();
+
+
+  /* =========================
+     CORES
+  ========================= */
+
+  const azul =
+    [11, 27, 48];
+
+
+  const azulClaro =
+    [22, 43, 70];
+
+
+  const dourado =
+    [217, 154, 22];
+
+
+  const cinza =
+    [107, 114, 128];
+
+
+  const fundoDourado =
+    [255, 244, 215];
+
+
+  const texto =
+    [40, 40, 40];
+
+
+  /* =========================
+     FUNDO
+  ========================= */
+
+  pdf.setFillColor(
+    255,
+    255,
+    255
+  );
+
+
+  pdf.rect(
+    0,
+    0,
+    largura,
+    altura,
+    'F'
+  );
+
+
+  /* =========================
+     CABEÇALHO
+  ========================= */
+
+  pdf.setFillColor(
+    azul[0],
+    azul[1],
+    azul[2]
+  );
+
+
+  pdf.rect(
+    0,
+    0,
+    largura,
+    55,
+    'F'
+  );
+
+
+  /* =========================
+     LINHA DOURADA
+  ========================= */
+
+  pdf.setFillColor(
+    dourado[0],
+    dourado[1],
+    dourado[2]
+  );
+
+
+  pdf.rect(
+    0,
+    53,
+    largura,
+    2,
+    'F'
+  );
+
+
+  /* =========================
+     LOGO
+  ========================= */
+
+  /*
+    Tamanho da logo no PDF.
+
+    Se depois quiser maior ou menor,
+    alteramos somente estes valores.
+  */
+
+  const logoX =
+    15;
+
+
+  const logoY =
+    6;
+
+
+  const logoLargura =
+    58;
+
+
+  const logoAltura =
+    43;
+
+
+  pdf.addImage(
+    logo,
+    'PNG',
+    logoX,
+    logoY,
+    logoLargura,
+    logoAltura
+  );
+
+
+  /* =========================
+     DADOS DO ORÇAMENTO
+  ========================= */
+
+  pdf.setTextColor(
+    255,
+    255,
+    255
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'bold'
+  );
+
+
+  pdf.setFontSize(
+    9
+  );
+
+
+  pdf.text(
+    'ORÇAMENTO Nº',
+    largura - 65,
+    17
+  );
+
+
+  pdf.setFontSize(
+    14
+  );
+
+
+  pdf.text(
+    orcamentoAtual.numero,
+    largura - 65,
+    25
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'normal'
+  );
+
+
+  pdf.setFontSize(
+    9
+  );
+
+
+  pdf.text(
+    orcamentoAtual.data,
+    largura - 65,
+    33
+  );
+
+
+  pdf.text(
+    orcamentoAtual.hora,
+    largura - 65,
+    39
+  );
+
+
+  /* =========================
+     TÍTULO
+  ========================= */
+
+  let y =
+    70;
+
+
+  pdf.setTextColor(
+    azul[0],
+    azul[1],
+    azul[2]
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'bold'
+  );
+
+
+  pdf.setFontSize(
+    18
+  );
+
+
+  pdf.text(
+    'ORÇAMENTO PROFISSIONAL',
+    18,
+    y
+  );
+
+
+  /* =========================
+     LINHA
+  ========================= */
+
+  y += 8;
+
+
+  pdf.setDrawColor(
+    dourado[0],
+    dourado[1],
+    dourado[2]
+  );
+
+
+  pdf.setLineWidth(
+    1
+  );
+
+
+  pdf.line(
+    18,
+    y,
+    largura - 18,
+    y
+  );
+
+
+  y += 15;
+
+
+  /* =========================
+     CLIENTE
+  ========================= */
+
+  pdf.setTextColor(
+    azul[0],
+    azul[1],
+    azul[2]
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'bold'
+  );
+
+
+  pdf.setFontSize(
+    12
+  );
+
+
+  pdf.text(
+    'CLIENTE',
+    18,
+    y
+  );
+
+
+  y += 8;
+
+
+  pdf.setFont(
+    'helvetica',
+    'normal'
+  );
+
+
+  pdf.setFontSize(
+    11
+  );
+
+
+  pdf.setTextColor(
+    texto[0],
+    texto[1],
+    texto[2]
+  );
+
+
+  pdf.text(
+    orcamentoAtual.cliente,
+    18,
+    y
+  );
+
+
+  y += 18;
+
+
+  /* =========================
+     SERVIÇO
+  ========================= */
+
+  pdf.setTextColor(
+    azul[0],
+    azul[1],
+    azul[2]
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'bold'
+  );
+
+
+  pdf.setFontSize(
+    12
+  );
+
+
+  pdf.text(
+    'SERVIÇO',
+    18,
+    y
+  );
+
+
+  y += 8;
+
+
+  pdf.setFont(
+    'helvetica',
+    'normal'
+  );
+
+
+  pdf.setFontSize(
+    11
+  );
+
+
+  pdf.setTextColor(
+    texto[0],
+    texto[1],
+    texto[2]
+  );
+
+
+  pdf.text(
+    'Tipo: ' +
+    orcamentoAtual.tipoServico,
+    18,
+    y
+  );
+
+
+  y += 8;
+
+
+  /* =========================
+     QUANTIDADE / ÁREA
+  ========================= */
+
+  if (
+    orcamentoAtual.quantidade
+  ) {
+
+    pdf.text(
+      'Quantidade / Área: ' +
+      orcamentoAtual.quantidade,
+      18,
+      y
+    );
+
+
+    y += 10;
+
+  }
+
+
+  /* =========================
+     DESCRIÇÃO
+  ========================= */
+
+  if (
+    orcamentoAtual.descricao
+  ) {
+
+    pdf.setTextColor(
+      azul[0],
+      azul[1],
+      azul[2]
+    );
+
+
+    pdf.setFont(
+      'helvetica',
+      'bold'
+    );
+
+
+    pdf.setFontSize(
+      12
+    );
+
+
+    pdf.text(
+      'DESCRIÇÃO DO SERVIÇO',
+      18,
+      y
+    );
+
+
+    y += 8;
+
+
+    pdf.setFont(
+      'helvetica',
+      'normal'
+    );
+
+
+    pdf.setTextColor(
+      texto[0],
+      texto[1],
+      texto[2]
+    );
+
+
+    pdf.setFontSize(
+      10
+    );
+
+
+    const descricaoLinhas =
+      pdf.splitTextToSize(
+        orcamentoAtual.descricao,
+        largura - 36
+      );
+
+
+    pdf.text(
+      descricaoLinhas,
+      18,
+      y
+    );
+
+
+    y +=
+      descricaoLinhas.length *
+      6 +
+      12;
+
+  }
+
+
+  /* =========================
+     VERIFICA ESPAÇO
+  ========================= */
+
+  if (
+    y > 220
+  ) {
+
+    pdf.addPage();
+
+    y = 40;
+
+  }
+
+
+  /* =========================
+     CAIXA DO VALOR
+  ========================= */
+
+  pdf.setFillColor(
+    fundoDourado[0],
+    fundoDourado[1],
+    fundoDourado[2]
+  );
+
+
+  pdf.roundedRect(
+    18,
+    y,
+    largura - 36,
+    38,
+    4,
+    4,
+    'F'
+  );
+
+
+  pdf.setDrawColor(
+    dourado[0],
+    dourado[1],
+    dourado[2]
+  );
+
+
+  pdf.setLineWidth(
+    0.8
+  );
+
+
+  pdf.roundedRect(
+    18,
+    y,
+    largura - 36,
+    38,
+    4,
+    4,
+    'S'
+  );
+
+
+  /* =========================
+     VALOR TOTAL
+  ========================= */
+
+  pdf.setTextColor(
+    azul[0],
+    azul[1],
+    azul[2]
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'bold'
+  );
+
+
+  pdf.setFontSize(
+    11
+  );
+
+
+  pdf.text(
+    'VALOR TOTAL DO ORÇAMENTO',
+    25,
+    y + 13
+  );
+
+
+  pdf.setFontSize(
+    20
+  );
+
+
+  pdf.text(
+    moeda(
+      orcamentoAtual.valorFinal
+    ),
+    25,
+    y + 27
+  );
+
+
+  /* =========================
+     RODAPÉ
+  ========================= */
+
+  const rodapeY =
+    altura - 25;
+
+
+  pdf.setDrawColor(
+    220,
+    220,
+    220
+  );
+
+
+  pdf.setLineWidth(
+    0.3
+  );
+
+
+  pdf.line(
+    18,
+    rodapeY - 7,
+    largura - 18,
+    rodapeY - 7
+  );
+
+
+  pdf.setTextColor(
+    cinza[0],
+    cinza[1],
+    cinza[2]
+  );
+
+
+  pdf.setFont(
+    'helvetica',
+    'normal'
+  );
+
+
+  pdf.setFontSize(
+    8
+  );
+
+
+  pdf.text(
+    'LS0DZ9 Serviços Gerais',
+    largura / 2,
+    rodapeY,
+    {
+      align: 'center'
+    }
+  );
+
+
+  pdf.text(
+    'Qualidade e acabamento em cada detalhe.',
+    largura / 2,
+    rodapeY + 5,
+    {
+      align: 'center'
+    }
+  );
+
+
+  /* =========================
+     NOME DO ARQUIVO
+  ========================= */
+
+  const nomeCliente =
+    orcamentoAtual.cliente
+      .replace(
+        /[^a-zA-Z0-9]/g,
+        '_'
+      );
+
+
+  const nomeArquivo =
+    'Orcamento_LS0DZ9_' +
+    nomeCliente +
+    '_' +
+    orcamentoAtual.numero +
+    '.pdf';
+
+
+  /* =========================
+     SALVAR PDF
+  ========================= */
+
+  pdf.save(
+    nomeArquivo
+  );
+
+}
+
+
+/* =========================
+   HISTÓRICO
+========================= */
 
 function carregarOrcamentos() {
 
-  const lista = document.getElementById('listaOrcamentos');
+  const lista =
+    document.getElementById(
+      'listaOrcamentos'
+    );
 
-  const historico = JSON.parse(
-    localStorage.getItem('orcamentosLS0DZ9') || '[]'
-  );
 
-  if (historico.length === 0) {
+  const historico =
+    JSON.parse(
+      localStorage.getItem(
+        'orcamentosLS0DZ9'
+      ) || '[]'
+    );
+
+
+  if (
+    historico.length === 0
+  ) {
+
     lista.innerHTML =
       '<div class="vazio">Nenhum orçamento salvo ainda.</div>';
+
     return;
+
   }
 
-  lista.innerHTML = '';
 
-  historico.forEach(function(item) {
+  lista.innerHTML =
+    '';
 
-    lista.innerHTML += `
 
-      <div class="item-lista">
+  historico.forEach(
+    function(item) {
 
-        <h3>${item.tipoServico}</h3>
+      lista.innerHTML += `
 
-        <p><strong>Cliente:</strong> ${item.cliente}</p>
+        <div class="item-lista">
 
-        <p>${item.numero} • ${item.data}</p>
+          <h3>
+            ${item.tipoServico}
+          </h3>
 
-        <p class="mini-valor">
-          ${moeda(item.valorFinal)}
-        </p>
+          <p>
+            <strong>
+              Cliente:
+            </strong>
 
-        <div class="botoes-item">
+            ${item.cliente}
+          </p>
 
-          <button
-            class="botao-pequeno btn-ver"
-            onclick="visualizarOrcamento(${item.id})"
-          >
-            👁️ Ver
-          </button>
+          <p>
+            ${item.numero}
+            •
+            ${item.data}
+          </p>
 
-          <button
-            class="botao-pequeno btn-excluir"
-            onclick="excluirOrcamento(${item.id})"
-          >
-            🗑️ Excluir
-          </button>
+          <p class="mini-valor">
+            ${moeda(item.valorFinal)}
+          </p>
+
+
+          <div class="botoes-item">
+
+
+            <button
+              class="botao-pequeno btn-ver"
+              onclick="visualizarOrcamento(${item.id})"
+            >
+              👁️ Ver
+            </button>
+
+
+            <button
+              class="botao-pequeno btn-excluir"
+              onclick="excluirOrcamento(${item.id})"
+            >
+              🗑️ Excluir
+            </button>
+
+
+          </div>
 
         </div>
 
-      </div>
-    `;
-  });
+      `;
+
+    }
+  );
+
 }
+
 
 function excluirOrcamento(id) {
 
-  if (!confirm('Deseja excluir este orçamento?')) return;
+  if (
+    !confirm(
+      'Deseja excluir este orçamento?'
+    )
+  )
+    return;
 
-  let historico = JSON.parse(
-    localStorage.getItem('orcamentosLS0DZ9') || '[]'
-  );
 
-  historico = historico.filter(function(item) {
-    return item.id !== id;
-  });
+  let historico =
+    JSON.parse(
+      localStorage.getItem(
+        'orcamentosLS0DZ9'
+      ) || '[]'
+    );
+
+
+  historico =
+    historico.filter(
+      function(item) {
+
+        return item.id !== id;
+
+      }
+    );
+
 
   localStorage.setItem(
     'orcamentosLS0DZ9',
-    JSON.stringify(historico)
+    JSON.stringify(
+      historico
+    )
   );
 
+
   carregarOrcamentos();
+
 }
+
 
 function limparHistorico() {
 
-  if (confirm('Deseja apagar todo o histórico?')) {
+  if (
+    confirm(
+      'Deseja apagar todo o histórico?'
+    )
+  ) {
 
-    localStorage.removeItem('orcamentosLS0DZ9');
+    localStorage.removeItem(
+      'orcamentosLS0DZ9'
+    );
+
 
     carregarOrcamentos();
+
   }
+
 }
+
+
+/* =========================
+   LIMPAR FORMULÁRIO
+========================= */
 
 function limparFormulario() {
 
-  document.getElementById('cliente').value = '';
-  document.getElementById('tipoServico').value = '';
-  document.getElementById('descricao').value = '';
-  document.getElementById('quantidade').value = '';
-  document.getElementById('maoObra').value = '';
-  document.getElementById('materiais').value = '';
-  document.getElementById('outros').value = '';
-  document.getElementById('lucro').value = '20';
+  document
+    .getElementById('cliente')
+    .value = '';
+
+
+  document
+    .getElementById('tipoServico')
+    .value = '';
+
+
+  document
+    .getElementById('descricao')
+    .value = '';
+
+
+  document
+    .getElementById('quantidade')
+    .value = '';
+
+
+  document
+    .getElementById('maoObra')
+    .value = '';
+
+
+  document
+    .getElementById('materiais')
+    .value = '';
+
+
+  document
+    .getElementById('outros')
+    .value = '';
+
+
+  document
+    .getElementById('lucro')
+    .value = '20';
+
 
   calcular();
+
 }
+
+
+/* =========================
+   CLIENTES
+========================= */
 
 function salvarCliente() {
 
-  const nome = document.getElementById('novoCliente').value.trim();
-  const telefone = document.getElementById('telefoneCliente').value.trim();
+  const nome =
+    document
+      .getElementById('novoCliente')
+      .value
+      .trim();
+
+
+  const telefone =
+    document
+      .getElementById('telefoneCliente')
+      .value
+      .trim();
+
 
   if (!nome) {
-    alert('Digite o nome do cliente.');
+
+    alert(
+      'Digite o nome do cliente.'
+    );
+
     return;
+
   }
 
-  const clientes = JSON.parse(
-    localStorage.getItem('clientesLS0DZ9') || '[]'
-  );
+
+  const clientes =
+    JSON.parse(
+      localStorage.getItem(
+        'clientesLS0DZ9'
+      ) || '[]'
+    );
+
 
   clientes.unshift({
-    id: Date.now(),
-    nome: nome,
-    telefone: telefone
+
+    id:
+      Date.now(),
+
+    nome:
+      nome,
+
+    telefone:
+      telefone
+
   });
+
 
   localStorage.setItem(
     'clientesLS0DZ9',
-    JSON.stringify(clientes)
+    JSON.stringify(
+      clientes
+    )
   );
 
-  document.getElementById('novoCliente').value = '';
-  document.getElementById('telefoneCliente').value = '';
+
+  document
+    .getElementById(
+      'novoCliente'
+    )
+    .value = '';
+
+
+  document
+    .getElementById(
+      'telefoneCliente'
+    )
+    .value = '';
+
 
   carregarClientes();
+
+  carregarClientesNoOrcamento();
+
 }
+
 
 function carregarClientes() {
 
-  const lista = document.getElementById('listaClientes');
+  const lista =
+    document.getElementById(
+      'listaClientes'
+    );
 
-  const clientes = JSON.parse(
-    localStorage.getItem('clientesLS0DZ9') || '[]'
-  );
 
-  if (clientes.length === 0) {
+  const clientes =
+    JSON.parse(
+      localStorage.getItem(
+        'clientesLS0DZ9'
+      ) || '[]'
+    );
+
+
+  if (
+    clientes.length === 0
+  ) {
+
     lista.innerHTML =
       '<div class="vazio">Nenhum cliente cadastrado ainda.</div>';
+
     return;
+
   }
 
-  lista.innerHTML = '';
 
-  clientes.forEach(function(cliente) {
+  lista.innerHTML =
+    '';
 
-    lista.innerHTML += `
 
-      <div class="item-lista">
-        <h3>${cliente.nome}</h3>
-        <p>📞 ${cliente.telefone || 'Telefone não informado'}</p>
-      </div>
-    `;
-  });
+  clientes.forEach(
+    function(cliente) {
+
+      lista.innerHTML += `
+
+        <div class="item-lista">
+
+          <h3>
+            ${cliente.nome}
+          </h3>
+
+          <p>
+            📞
+            ${
+              cliente.telefone ||
+              'Telefone não informado'
+            }
+          </p>
+
+
+          <div class="botoes-item">
+
+
+            <button
+              class="botao-pequeno btn-editar"
+              onclick="editarCliente(${cliente.id})"
+            >
+              ✏️ Editar
+            </button>
+
+
+            <button
+              class="botao-pequeno btn-excluir"
+              onclick="excluirCliente(${cliente.id})"
+            >
+              🗑️ Excluir
+            </button>
+
+
+          </div>
+
+        </div>
+
+      `;
+
+    }
+  );
+
 }
 
+
+function editarCliente(id) {
+
+  const clientes =
+    JSON.parse(
+      localStorage.getItem(
+        'clientesLS0DZ9'
+      ) || '[]'
+    );
+
+
+  const cliente =
+    clientes.find(
+      function(item) {
+
+        return item.id === id;
+
+      }
+    );
+
+
+  if (!cliente) {
+
+    alert(
+      'Cliente não encontrado.'
+    );
+
+    return;
+
+  }
+
+
+  const novoNome =
+    prompt(
+      'Editar nome do cliente:',
+      cliente.nome
+    );
+
+
+  if (
+    novoNome === null
+  )
+    return;
+
+
+  const nomeLimpo =
+    novoNome.trim();
+
+
+  if (!nomeLimpo) {
+
+    alert(
+      'O nome do cliente não pode ficar vazio.'
+    );
+
+    return;
+
+  }
+
+
+  const novoTelefone =
+    prompt(
+      'Editar telefone do cliente:',
+      cliente.telefone || ''
+    );
+
+
+  if (
+    novoTelefone === null
+  )
+    return;
+
+
+  cliente.nome =
+    nomeLimpo;
+
+
+  cliente.telefone =
+    novoTelefone.trim();
+
+
+  localStorage.setItem(
+    'clientesLS0DZ9',
+    JSON.stringify(
+      clientes
+    )
+  );
+
+
+  carregarClientes();
+
+  carregarClientesNoOrcamento();
+
+
+  alert(
+    'Cliente atualizado com sucesso.'
+  );
+
+}
+
+
+function excluirCliente(id) {
+
+  if (
+    !confirm(
+      'Deseja excluir este cliente?'
+    )
+  )
+    return;
+
+
+  let clientes =
+    JSON.parse(
+      localStorage.getItem(
+        'clientesLS0DZ9'
+      ) || '[]'
+    );
+
+
+  clientes =
+    clientes.filter(
+      function(cliente) {
+
+        return cliente.id !== id;
+
+      }
+    );
+
+
+  localStorage.setItem(
+    'clientesLS0DZ9',
+    JSON.stringify(
+      clientes
+    )
+  );
+
+
+  carregarClientes();
+
+  carregarClientesNoOrcamento();
+
+
+  alert(
+    'Cliente excluído com sucesso.'
+  );
+
+}
+
+
+function carregarClientesNoOrcamento() {
+
+  const lista =
+    document.getElementById(
+      'listaClientesOrcamento'
+    );
+
+
+  const clientes =
+    JSON.parse(
+      localStorage.getItem(
+        'clientesLS0DZ9'
+      ) || '[]'
+    );
+
+
+  lista.innerHTML =
+    '';
+
+
+  clientes.forEach(
+    function(cliente) {
+
+      const opcao =
+        document.createElement(
+          'option'
+        );
+
+
+      opcao.value =
+        cliente.nome;
+
+
+      lista.appendChild(
+        opcao
+      );
+
+    }
+  );
+
+}
+
+
+/* =========================
+   INICIAR APP
+========================= */
+
 calcular();
+
+carregarClientesNoOrcamento();
+
 
 </script>
 
 </body>
-</html>
+
+  </html>
