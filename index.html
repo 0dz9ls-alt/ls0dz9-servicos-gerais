@@ -346,6 +346,23 @@
       padding: 30px 15px;
     }
 
+    .servico-clicavel {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.servico-clicavel:active {
+  transform: scale(0.98);
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+}
+
+.servico-clicavel small {
+  display: block;
+  margin-top: 10px;
+  color: var(--dourado);
+  font-weight: bold;
+}
+
     /* ORÇAMENTO PROFISSIONAL */
     .documento {
       background: white;
