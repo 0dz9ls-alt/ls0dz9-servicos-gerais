@@ -649,21 +649,45 @@
     </section>
 
     <!-- SERVIÇOS -->
-    <section id="servicos" class="tela">
+    <div class="lista">
 
-      <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Pintura')">
+    <h3>🎨 Pintura</h3>
+    <p>Pintura residencial, comercial, interna e externa.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
 
-      <h2 class="titulo">🛠️ Serviços disponíveis</h2>
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Alvenaria')">
+    <h3>🧱 Alvenaria</h3>
+    <p>Construção, reparos e serviços de alvenaria.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
 
-      <div class="lista">
-        <div class="item-lista"><h3>🎨 Pintura</h3><p>Pintura residencial, comercial, interna e externa.</p></div>
-        <div class="item-lista"><h3>🧱 Alvenaria</h3><p>Construção, reparos e serviços de alvenaria.</p></div>
-        <div class="item-lista"><h3>⚡ Elétrica</h3><p>Instalações, manutenção e reparos elétricos.</p></div>
-        <div class="item-lista"><h3>🚿 Hidráulica</h3><p>Instalações, vazamentos e manutenção hidráulica.</p></div>
-        <div class="item-lista"><h3>🔲 Pisos e Revestimentos</h3><p>Instalação e manutenção de pisos e revestimentos.</p></div>
-        <div class="item-lista"><h3>🏠 Reformas Gerais</h3><p>Serviços completos para reformas e manutenção.</p></div>
-      </div>
-    </section>
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Elétrica')">
+    <h3>⚡ Elétrica</h3>
+    <p>Instalações, manutenção e reparos elétricos.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
+
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Hidráulica')">
+    <h3>🚿 Hidráulica</h3>
+    <p>Instalações, vazamentos e manutenção hidráulica.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
+
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Pisos e Revestimentos')">
+    <h3>🔲 Pisos e Revestimentos</h3>
+    <p>Instalação e manutenção de pisos e revestimentos.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
+
+  <div class="item-lista servico-clicavel" onclick="novoOrcamentoServico('Reformas Gerais')">
+    <h3>🏠 Reformas Gerais</h3>
+    <p>Serviços completos para reformas e manutenção.</p>
+    <small>Toque para criar um orçamento →</small>
+  </div>
+
+    </div>
 
     <!-- HISTÓRICO -->
     <section id="historico" class="tela">
@@ -1156,6 +1180,13 @@ Obrigado pela preferência!
   calcular();
 
 </script>
+function novoOrcamentoServico(servico) {
+  abrirTela('orcamento');
 
+  document.getElementById('tipoServico').value = servico;
+
+  window.scrollTo(0, 0);
+}
+  
 </body>
 </html>
