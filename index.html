@@ -45,6 +45,7 @@
       color: white;
       padding: 28px 20px 32px;
       border-radius: 0 0 28px 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.12);
     }
 
     .logo {
@@ -107,7 +108,7 @@
     }
 
     .titulo {
-      font-size: 19px;
+      font-size: 20px;
       margin-bottom: 16px;
     }
 
@@ -122,13 +123,13 @@
       border-radius: 18px;
       padding: 20px 14px;
       min-height: 150px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 14px rgba(0,0,0,.08);
       border: 1px solid #e8e8e8;
       cursor: pointer;
     }
 
     .card:active {
-      transform: scale(0.97);
+      transform: scale(.97);
     }
 
     .icone {
@@ -185,6 +186,10 @@
       cursor: pointer;
     }
 
+    .botao:active {
+      transform: scale(.98);
+    }
+
     .botao-secundario {
       background: white;
       color: var(--azul);
@@ -193,6 +198,10 @@
 
     .botao-verde {
       background: var(--verde);
+    }
+
+    .botao-vermelho {
+      background: var(--vermelho);
     }
 
     .voltar {
@@ -209,7 +218,7 @@
       background: white;
       padding: 20px;
       border-radius: 18px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
     }
 
     .campo {
@@ -262,9 +271,9 @@
     .linha-resultado {
       display: flex;
       justify-content: space-between;
+      gap: 15px;
       margin: 10px 0;
       font-size: 14px;
-      gap: 15px;
     }
 
     .valor-final {
@@ -286,18 +295,49 @@
       background: white;
       padding: 16px;
       border-radius: 14px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
     }
 
     .item-lista h3 {
       font-size: 16px;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     .item-lista p {
       color: var(--cinza);
       font-size: 13px;
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+
+    .mini-valor {
+      color: var(--verde) !important;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    .botoes-item {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .botao-pequeno {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-ver {
+      background: var(--azul);
+      color: white;
+    }
+
+    .btn-excluir {
+      background: #fff0f0;
+      color: var(--vermelho);
     }
 
     .vazio {
@@ -306,410 +346,815 @@
       padding: 30px 15px;
     }
 
+    /* ORÇAMENTO PROFISSIONAL */
+    .documento {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,.09);
+    }
+
+    .doc-topo {
+      background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+      color: white;
+      padding: 22px;
+    }
+
+    .doc-topo h2 {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .doc-topo p {
+      color: var(--dourado-claro);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    .doc-numero {
+      margin-top: 18px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .doc-corpo {
+      padding: 20px;
+    }
+
+    .doc-secao {
+      margin-bottom: 22px;
+    }
+
+    .doc-secao h3 {
+      color: var(--azul);
+      font-size: 15px;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--dourado);
+    }
+
+    .doc-linha {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 7px 0;
+      font-size: 14px;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .doc-linha span:first-child {
+      color: var(--cinza);
+    }
+
+    .descricao-doc {
+      line-height: 1.6;
+      font-size: 14px;
+      color: #40495a;
+    }
+
+    .total-doc {
+      background: #fff4d7;
+      border: 2px solid var(--dourado);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .total-doc span {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--azul);
+    }
+
+    .total-doc strong {
+      font-size: 22px;
+      color: var(--azul);
+    }
+
+    .rodape-doc {
+      background: #f8f8f8;
+      padding: 16px 20px;
+      text-align: center;
+      color: var(--cinza);
+      font-size: 12px;
+    }
+
     footer {
       text-align: center;
       padding: 20px 10px 5px;
       color: var(--cinza);
       font-size: 11px;
     }
+
+    @media (max-width: 400px) {
+      .menu {
+        grid-template-columns: 1fr;
+      }
+
+      .total-doc {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <header>
-      <div class="logo">
-        <div class="logo-icon">🏠</div>
+  <header>
+    <div class="logo">
+      <div class="logo-icon">🏠</div>
+      <div>
+        <h1>LS0DZ9</h1>
+        <p>SERVIÇOS GERAIS</p>
+      </div>
+    </div>
 
-        <div>
-          <h1>LS0DZ9</h1>
-          <p>SERVIÇOS GERAIS</p>
+    <div class="boas-vindas">
+      <h2>Organize seus <span>serviços</span></h2>
+      <p>Crie orçamentos profissionais e acompanhe seus trabalhos em um só lugar.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INÍCIO -->
+    <section id="inicio" class="tela ativa">
+
+      <h2 class="titulo">Menu principal</h2>
+
+      <div class="menu">
+
+        <div class="card" onclick="abrirTela('orcamento')">
+          <div class="icone">➕</div>
+          <h3>Novo Orçamento</h3>
+          <p>Crie e calcule um orçamento profissional.</p>
         </div>
+
+        <div class="card" onclick="abrirTela('clientes')">
+          <div class="icone">👥</div>
+          <h3>Clientes</h3>
+          <p>Cadastre e organize seus clientes.</p>
+        </div>
+
+        <div class="card" onclick="abrirTela('servicos')">
+          <div class="icone">🛠️</div>
+          <h3>Serviços</h3>
+          <p>Consulte os serviços disponíveis.</p>
+        </div>
+
+        <div class="card" onclick="abrirTela('historico')">
+          <div class="icone">📋</div>
+          <h3>Histórico</h3>
+          <p>Visualize seus orçamentos salvos.</p>
+        </div>
+
       </div>
 
-      <div class="boas-vindas">
-        <h2>Organize seus <span>serviços</span></h2>
-        <p>Crie orçamentos, cadastre clientes e acompanhe seus trabalhos em um só lugar.</p>
-      </div>
-    </header>
+      <div class="destaque">
+        <h3>🏗️ Orçamentos mais profissionais</h3>
+        <p>Crie um documento organizado, com custos, lucro e valor final para apresentar ao seu cliente.</p>
 
-    <main>
-
-      <!-- TELA INICIAL -->
-      <section id="inicio" class="tela ativa">
-        <h2 class="titulo">Menu principal</h2>
-
-        <div class="menu">
-
-          <div class="card" onclick="abrirTela('orcamento')">
-            <div class="icone">➕</div>
-            <h3>Novo Orçamento</h3>
-            <p>Crie e calcule um orçamento para seu cliente.</p>
-          </div>
-
-          <div class="card" onclick="abrirTela('clientes')">
-            <div class="icone">👥</div>
-            <h3>Clientes</h3>
-            <p>Cadastre e organize seus clientes.</p>
-          </div>
-
-          <div class="card" onclick="abrirTela('servicos')">
-            <div class="icone">🛠️</div>
-            <h3>Serviços</h3>
-            <p>Consulte os tipos de serviços disponíveis.</p>
-          </div>
-
-          <div class="card" onclick="abrirTela('historico')">
-            <div class="icone">📋</div>
-            <h3>Histórico</h3>
-            <p>Consulte seus orçamentos salvos.</p>
-          </div>
-
-        </div>
-
-        <div class="destaque">
-          <h3>🏗️ Profissionalize seu trabalho</h3>
-          <p>Tenha mais organização e controle sobre seus serviços, clientes e orçamentos.</p>
-
-          <button class="botao" onclick="abrirTela('orcamento')">
-            Criar orçamento agora
-          </button>
-        </div>
-      </section>
-
-      <!-- NOVO ORÇAMENTO -->
-      <section id="orcamento" class="tela">
-
-        <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
-
-        <h2 class="titulo">➕ Novo Orçamento</h2>
-
-        <div class="formulario">
-
-          <div class="campo">
-            <label>Nome do cliente</label>
-            <input type="text" id="cliente" placeholder="Digite o nome do cliente">
-          </div>
-
-          <div class="campo">
-            <label>Tipo de serviço</label>
-            <select id="tipoServico">
-              <option value="">Selecione o serviço</option>
-              <option>Pintura</option>
-              <option>Alvenaria</option>
-              <option>Elétrica</option>
-              <option>Hidráulica</option>
-              <option>Pisos e Revestimentos</option>
-              <option>Gesso e Drywall</option>
-              <option>Reformas Gerais</option>
-              <option>Manutenção</option>
-              <option>Outro Serviço</option>
-            </select>
-          </div>
-
-          <div class="campo">
-            <label>Descrição do serviço</label>
-            <textarea id="descricao" placeholder="Descreva o serviço que será realizado"></textarea>
-          </div>
-
-          <div class="campo">
-            <label>Quantidade / Área (opcional)</label>
-            <input type="number" id="quantidade" placeholder="Exemplo: 50">
-          </div>
-
-          <div class="campo">
-            <label>Valor da mão de obra (R$)</label>
-            <input type="number" id="maoObra" placeholder="0,00" step="0.01" oninput="calcular()">
-          </div>
-
-          <div class="campo">
-            <label>Valor dos materiais (R$)</label>
-            <input type="number" id="materiais" placeholder="0,00" step="0.01" oninput="calcular()">
-          </div>
-
-          <div class="campo">
-            <label>Outros custos (R$)</label>
-            <input type="number" id="outros" placeholder="0,00" step="0.01" oninput="calcular()">
-          </div>
-
-          <div class="campo">
-            <label>Lucro desejado (%)</label>
-            <input type="number" id="lucro" value="20" step="1" oninput="calcular()">
-          </div>
-
-          <div class="resultado">
-            <h3>💰 Resumo do orçamento</h3>
-
-            <div class="linha-resultado">
-              <span>Custo total:</span>
-              <strong id="custoTotal">R$ 0,00</strong>
-            </div>
-
-            <div class="linha-resultado">
-              <span>Lucro:</span>
-              <strong id="valorLucro">R$ 0,00</strong>
-            </div>
-
-            <div class="linha-resultado valor-final">
-              <span>VALOR FINAL:</span>
-              <strong id="valorFinal">R$ 0,00</strong>
-            </div>
-          </div>
-
-          <button class="botao botao-verde" onclick="salvarOrcamento()">
-            💾 Salvar orçamento
-          </button>
-
-          <button class="botao botao-secundario" onclick="limparFormulario()">
-            Limpar dados
-          </button>
-
-        </div>
-      </section>
-
-      <!-- CLIENTES -->
-      <section id="clientes" class="tela">
-
-        <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
-
-        <h2 class="titulo">👥 Clientes</h2>
-
-        <div class="formulario">
-
-          <div class="campo">
-            <label>Nome do cliente</label>
-            <input type="text" id="novoCliente" placeholder="Digite o nome">
-          </div>
-
-          <div class="campo">
-            <label>Telefone</label>
-            <input type="tel" id="telefoneCliente" placeholder="(00) 00000-0000">
-          </div>
-
-          <button class="botao" onclick="salvarCliente()">
-            Adicionar cliente
-          </button>
-        </div>
-
-        <br>
-
-        <div id="listaClientes" class="lista"></div>
-      </section>
-
-      <!-- SERVIÇOS -->
-      <section id="servicos" class="tela">
-
-        <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
-
-        <h2 class="titulo">🛠️ Serviços disponíveis</h2>
-
-        <div class="lista">
-          <div class="item-lista"><h3>🎨 Pintura</h3><p>Pintura residencial, comercial, interna e externa.</p></div>
-          <div class="item-lista"><h3>🧱 Alvenaria</h3><p>Construção, reparos e serviços de alvenaria.</p></div>
-          <div class="item-lista"><h3>⚡ Elétrica</h3><p>Instalações, manutenção e reparos elétricos.</p></div>
-          <div class="item-lista"><h3>🚿 Hidráulica</h3><p>Instalações, vazamentos e manutenção hidráulica.</p></div>
-          <div class="item-lista"><h3>🔲 Pisos e Revestimentos</h3><p>Instalação e manutenção de pisos e revestimentos.</p></div>
-          <div class="item-lista"><h3>🏠 Reformas Gerais</h3><p>Serviços completos para reformas e manutenção.</p></div>
-        </div>
-      </section>
-
-      <!-- HISTÓRICO -->
-      <section id="historico" class="tela">
-
-        <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
-
-        <h2 class="titulo">📋 Histórico de Orçamentos</h2>
-
-        <div id="listaOrcamentos" class="lista"></div>
-
-        <button class="botao botao-secundario" onclick="limparHistorico()">
-          Limpar histórico
+        <button class="botao" onclick="abrirTela('orcamento')">
+          Criar orçamento agora
         </button>
-      </section>
+      </div>
 
-    </main>
+    </section>
 
-    <footer>
-      LS0DZ9 Serviços Gerais © 2026
-    </footer>
+    <!-- NOVO ORÇAMENTO -->
+    <section id="orcamento" class="tela">
 
-  </div>
+      <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
 
-  <script>
-    function abrirTela(id) {
-      document.querySelectorAll('.tela').forEach(function(tela) {
-        tela.classList.remove('ativa');
-      });
+      <h2 class="titulo">➕ Novo Orçamento</h2>
 
-      document.getElementById(id).classList.add('ativa');
+      <div class="formulario">
 
-      if (id === 'historico') carregarOrcamentos();
-      if (id === 'clientes') carregarClientes();
+        <div class="campo">
+          <label>Nome do cliente</label>
+          <input type="text" id="cliente" placeholder="Digite o nome do cliente">
+        </div>
 
-      window.scrollTo(0, 0);
-    }
+        <div class="campo">
+          <label>Tipo de serviço</label>
+          <select id="tipoServico">
+            <option value="">Selecione o serviço</option>
+            <option>Pintura</option>
+            <option>Alvenaria</option>
+            <option>Elétrica</option>
+            <option>Hidráulica</option>
+            <option>Pisos e Revestimentos</option>
+            <option>Gesso e Drywall</option>
+            <option>Reformas Gerais</option>
+            <option>Manutenção</option>
+            <option>Outro Serviço</option>
+          </select>
+        </div>
 
-    function moeda(valor) {
-      return Number(valor).toLocaleString('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-      });
-    }
+        <div class="campo">
+          <label>Descrição do serviço</label>
+          <textarea id="descricao" placeholder="Descreva detalhadamente o serviço que será realizado"></textarea>
+        </div>
 
-    function valorCampo(id) {
-      return parseFloat(document.getElementById(id).value) || 0;
-    }
+        <div class="campo">
+          <label>Quantidade / Área</label>
+          <input type="text" id="quantidade" placeholder="Exemplo: 50 m²">
+        </div>
 
-    function calcular() {
-      const maoObra = valorCampo('maoObra');
-      const materiais = valorCampo('materiais');
-      const outros = valorCampo('outros');
-      const percentualLucro = valorCampo('lucro');
+        <div class="campo">
+          <label>Valor da mão de obra (R$)</label>
+          <input type="number" id="maoObra" placeholder="0,00" step="0.01" oninput="calcular()">
+        </div>
 
-      const custoTotal = maoObra + materiais + outros;
-      const valorLucro = custoTotal * (percentualLucro / 100);
-      const valorFinal = custoTotal + valorLucro;
+        <div class="campo">
+          <label>Valor dos materiais (R$)</label>
+          <input type="number" id="materiais" placeholder="0,00" step="0.01" oninput="calcular()">
+        </div>
 
-      document.getElementById('custoTotal').textContent = moeda(custoTotal);
-      document.getElementById('valorLucro').textContent = moeda(valorLucro);
-      document.getElementById('valorFinal').textContent = moeda(valorFinal);
-    }
+        <div class="campo">
+          <label>Outros custos (R$)</label>
+          <input type="number" id="outros" placeholder="0,00" step="0.01" oninput="calcular()">
+        </div>
 
-    function salvarOrcamento() {
-      const cliente = document.getElementById('cliente').value.trim();
-      const tipoServico = document.getElementById('tipoServico').value;
-      const descricao = document.getElementById('descricao').value.trim();
+        <div class="campo">
+          <label>Lucro desejado (%)</label>
+          <input type="number" id="lucro" value="20" step="1" oninput="calcular()">
+        </div>
 
-      if (!cliente || !tipoServico) {
-        alert('Preencha pelo menos o nome do cliente e o tipo de serviço.');
-        return;
-      }
+        <div class="resultado">
+          <h3>💰 Resumo do orçamento</h3>
 
-      const maoObra = valorCampo('maoObra');
-      const materiais = valorCampo('materiais');
-      const outros = valorCampo('outros');
-      const lucroPercentual = valorCampo('lucro');
-
-      const custoTotal = maoObra + materiais + outros;
-      const lucro = custoTotal * (lucroPercentual / 100);
-      const valorFinal = custoTotal + lucro;
-
-      const orcamento = {
-        id: Date.now(),
-        data: new Date().toLocaleDateString('pt-BR'),
-        cliente: cliente,
-        tipoServico: tipoServico,
-        descricao: descricao,
-        quantidade: document.getElementById('quantidade').value,
-        maoObra: maoObra,
-        materiais: materiais,
-        outros: outros,
-        lucroPercentual: lucroPercentual,
-        valorFinal: valorFinal
-      };
-
-      const historico = JSON.parse(localStorage.getItem('orcamentosLS0DZ9') || '[]');
-      historico.unshift(orcamento);
-      localStorage.setItem('orcamentosLS0DZ9', JSON.stringify(historico));
-
-      alert('Orçamento salvo com sucesso!');
-
-      limparFormulario();
-      abrirTela('historico');
-    }
-
-    function limparFormulario() {
-      document.getElementById('cliente').value = '';
-      document.getElementById('tipoServico').value = '';
-      document.getElementById('descricao').value = '';
-      document.getElementById('quantidade').value = '';
-      document.getElementById('maoObra').value = '';
-      document.getElementById('materiais').value = '';
-      document.getElementById('outros').value = '';
-      document.getElementById('lucro').value = '20';
-      calcular();
-    }
-
-    function carregarOrcamentos() {
-      const lista = document.getElementById('listaOrcamentos');
-      const historico = JSON.parse(localStorage.getItem('orcamentosLS0DZ9') || '[]');
-
-      if (historico.length === 0) {
-        lista.innerHTML = '<div class="vazio">Nenhum orçamento salvo ainda.</div>';
-        return;
-      }
-
-      lista.innerHTML = '';
-
-      historico.forEach(function(item) {
-        lista.innerHTML += `
-          <div class="item-lista">
-            <h3>${item.tipoServico}</h3>
-            <p><strong>Cliente:</strong> ${item.cliente}</p>
-            <p><strong>Data:</strong> ${item.data}</p>
-            <p><strong>Valor final:</strong> ${moeda(item.valorFinal)}</p>
+          <div class="linha-resultado">
+            <span>Custo total:</span>
+            <strong id="custoTotal">R$ 0,00</strong>
           </div>
-        `;
-      });
-    }
 
-    function limparHistorico() {
-      if (confirm('Deseja realmente apagar todo o histórico?')) {
-        localStorage.removeItem('orcamentosLS0DZ9');
-        carregarOrcamentos();
-      }
-    }
-
-    function salvarCliente() {
-      const nome = document.getElementById('novoCliente').value.trim();
-      const telefone = document.getElementById('telefoneCliente').value.trim();
-
-      if (!nome) {
-        alert('Digite o nome do cliente.');
-        return;
-      }
-
-      const clientes = JSON.parse(localStorage.getItem('clientesLS0DZ9') || '[]');
-
-      clientes.unshift({
-        id: Date.now(),
-        nome: nome,
-        telefone: telefone
-      });
-
-      localStorage.setItem('clientesLS0DZ9', JSON.stringify(clientes));
-
-      document.getElementById('novoCliente').value = '';
-      document.getElementById('telefoneCliente').value = '';
-
-      carregarClientes();
-    }
-
-    function carregarClientes() {
-      const lista = document.getElementById('listaClientes');
-      const clientes = JSON.parse(localStorage.getItem('clientesLS0DZ9') || '[]');
-
-      if (clientes.length === 0) {
-        lista.innerHTML = '<div class="vazio">Nenhum cliente cadastrado ainda.</div>';
-        return;
-      }
-
-      lista.innerHTML = '';
-
-      clientes.forEach(function(cliente) {
-        lista.innerHTML += `
-          <div class="item-lista">
-            <h3>${cliente.nome}</h3>
-            <p>📞 ${cliente.telefone || 'Telefone não informado'}</p>
+          <div class="linha-resultado">
+            <span>Lucro:</span>
+            <strong id="valorLucro">R$ 0,00</strong>
           </div>
-        `;
-      });
+
+          <div class="linha-resultado valor-final">
+            <span>VALOR FINAL:</span>
+            <strong id="valorFinal">R$ 0,00</strong>
+          </div>
+        </div>
+
+        <button class="botao botao-verde" onclick="salvarOrcamento()">
+          💾 Salvar e visualizar orçamento
+        </button>
+
+        <button class="botao botao-secundario" onclick="limparFormulario()">
+          Limpar dados
+        </button>
+
+      </div>
+    </section>
+
+    <!-- CLIENTES -->
+    <section id="clientes" class="tela">
+
+      <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
+
+      <h2 class="titulo">👥 Clientes</h2>
+
+      <div class="formulario">
+
+        <div class="campo">
+          <label>Nome do cliente</label>
+          <input type="text" id="novoCliente" placeholder="Digite o nome">
+        </div>
+
+        <div class="campo">
+          <label>Telefone</label>
+          <input type="tel" id="telefoneCliente" placeholder="(00) 00000-0000">
+        </div>
+
+        <button class="botao" onclick="salvarCliente()">
+          Adicionar cliente
+        </button>
+      </div>
+
+      <br>
+
+      <div id="listaClientes" class="lista"></div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="tela">
+
+      <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
+
+      <h2 class="titulo">🛠️ Serviços disponíveis</h2>
+
+      <div class="lista">
+        <div class="item-lista"><h3>🎨 Pintura</h3><p>Pintura residencial, comercial, interna e externa.</p></div>
+        <div class="item-lista"><h3>🧱 Alvenaria</h3><p>Construção, reparos e serviços de alvenaria.</p></div>
+        <div class="item-lista"><h3>⚡ Elétrica</h3><p>Instalações, manutenção e reparos elétricos.</p></div>
+        <div class="item-lista"><h3>🚿 Hidráulica</h3><p>Instalações, vazamentos e manutenção hidráulica.</p></div>
+        <div class="item-lista"><h3>🔲 Pisos e Revestimentos</h3><p>Instalação e manutenção de pisos e revestimentos.</p></div>
+        <div class="item-lista"><h3>🏠 Reformas Gerais</h3><p>Serviços completos para reformas e manutenção.</p></div>
+      </div>
+    </section>
+
+    <!-- HISTÓRICO -->
+    <section id="historico" class="tela">
+
+      <button class="voltar" onclick="abrirTela('inicio')">← Voltar ao início</button>
+
+      <h2 class="titulo">📋 Histórico de Orçamentos</h2>
+
+      <div id="listaOrcamentos" class="lista"></div>
+
+      <button class="botao botao-secundario" onclick="limparHistorico()">
+        Limpar todo o histórico
+      </button>
+    </section>
+
+    <!-- DOCUMENTO PROFISSIONAL -->
+    <section id="visualizar" class="tela">
+
+      <button class="voltar" onclick="abrirTela('historico')">← Voltar ao histórico</button>
+
+      <h2 class="titulo">🧾 Orçamento Profissional</h2>
+
+      <div id="documentoOrcamento"></div>
+
+      <button class="botao botao-verde" onclick="compartilharWhatsApp()">
+        💬 Enviar pelo WhatsApp
+      </button>
+
+      <button class="botao" onclick="compartilharOrcamento()">
+        📤 Compartilhar orçamento
+      </button>
+
+      <button class="botao botao-secundario" onclick="abrirTela('historico')">
+        Voltar ao histórico
+      </button>
+
+    </section>
+
+  </main>
+
+  <footer>
+    LS0DZ9 Serviços Gerais © 2026
+  </footer>
+
+</div>
+
+<script>
+
+  let orcamentoAtual = null;
+
+  function abrirTela(id) {
+    document.querySelectorAll('.tela').forEach(function(tela) {
+      tela.classList.remove('ativa');
+    });
+
+    document.getElementById(id).classList.add('ativa');
+
+    if (id === 'historico') carregarOrcamentos();
+    if (id === 'clientes') carregarClientes();
+
+    window.scrollTo(0, 0);
+  }
+
+  function moeda(valor) {
+    return Number(valor || 0).toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    });
+  }
+
+  function valorCampo(id) {
+    return parseFloat(document.getElementById(id).value) || 0;
+  }
+
+  function calcular() {
+    const maoObra = valorCampo('maoObra');
+    const materiais = valorCampo('materiais');
+    const outros = valorCampo('outros');
+    const percentualLucro = valorCampo('lucro');
+
+    const custoTotal = maoObra + materiais + outros;
+    const valorLucro = custoTotal * (percentualLucro / 100);
+    const valorFinal = custoTotal + valorLucro;
+
+    document.getElementById('custoTotal').textContent = moeda(custoTotal);
+    document.getElementById('valorLucro').textContent = moeda(valorLucro);
+    document.getElementById('valorFinal').textContent = moeda(valorFinal);
+  }
+
+  function gerarNumeroOrcamento() {
+    const data = new Date();
+    const ano = data.getFullYear();
+    const aleatorio = Math.floor(1000 + Math.random() * 9000);
+    return 'LS-' + ano + '-' + aleatorio;
+  }
+
+  function salvarOrcamento() {
+
+    const cliente = document.getElementById('cliente').value.trim();
+    const tipoServico = document.getElementById('tipoServico').value;
+    const descricao = document.getElementById('descricao').value.trim();
+
+    if (!cliente || !tipoServico) {
+      alert('Preencha pelo menos o nome do cliente e o tipo de serviço.');
+      return;
     }
+
+    const maoObra = valorCampo('maoObra');
+    const materiais = valorCampo('materiais');
+    const outros = valorCampo('outros');
+    const lucroPercentual = valorCampo('lucro');
+
+    const custoTotal = maoObra + materiais + outros;
+    const lucro = custoTotal * (lucroPercentual / 100);
+    const valorFinal = custoTotal + lucro;
+
+    const agora = new Date();
+
+    const orcamento = {
+      id: Date.now(),
+      numero: gerarNumeroOrcamento(),
+      data: agora.toLocaleDateString('pt-BR'),
+      hora: agora.toLocaleTimeString('pt-BR', {
+        hour: '2-digit',
+        minute: '2-digit'
+      }),
+      cliente: cliente,
+      tipoServico: tipoServico,
+      descricao: descricao,
+      quantidade: document.getElementById('quantidade').value.trim(),
+      maoObra: maoObra,
+      materiais: materiais,
+      outros: outros,
+      custoTotal: custoTotal,
+      lucroPercentual: lucroPercentual,
+      lucro: lucro,
+      valorFinal: valorFinal
+    };
+
+    const historico = JSON.parse(localStorage.getItem('orcamentosLS0DZ9') || '[]');
+
+    historico.unshift(orcamento);
+
+    localStorage.setItem(
+      'orcamentosLS0DZ9',
+      JSON.stringify(historico)
+    );
+
+    orcamentoAtual = orcamento;
+
+    limparFormulario();
+
+    visualizarOrcamento(orcamento.id);
+  }
+
+  function visualizarOrcamento(id) {
+
+    const historico = JSON.parse(
+      localStorage.getItem('orcamentosLS0DZ9') || '[]'
+    );
+
+    const item = historico.find(function(orcamento) {
+      return orcamento.id === id;
+    });
+
+    if (!item) {
+      alert('Orçamento não encontrado.');
+      return;
+    }
+
+    orcamentoAtual = item;
+
+    document.getElementById('documentoOrcamento').innerHTML = `
+
+      <div class="documento">
+
+        <div class="doc-topo">
+
+          <h2>LS0DZ9</h2>
+
+          <p>SERVIÇOS GERAIS</p>
+
+          <div class="doc-numero">
+            <strong>ORÇAMENTO Nº ${item.numero}</strong>
+            <br>
+            <small>${item.data} às ${item.hora}</small>
+          </div>
+
+        </div>
+
+        <div class="doc-corpo">
+
+          <div class="doc-secao">
+            <h3>👤 DADOS DO CLIENTE</h3>
+
+            <div class="doc-linha">
+              <span>Cliente</span>
+              <strong>${item.cliente}</strong>
+            </div>
+          </div>
+
+          <div class="doc-secao">
+            <h3>🛠️ SERVIÇO</h3>
+
+            <div class="doc-linha">
+              <span>Tipo de serviço</span>
+              <strong>${item.tipoServico}</strong>
+            </div>
+
+            ${item.quantidade ? `
+              <div class="doc-linha">
+                <span>Quantidade / Área</span>
+                <strong>${item.quantidade}</strong>
+              </div>
+            ` : ''}
+
+            ${item.descricao ? `
+              <p class="descricao-doc">
+                ${item.descricao}
+              </p>
+            ` : ''}
+          </div>
+
+          <div class="doc-secao">
+            <h3>💰 COMPOSIÇÃO DE VALORES</h3>
+
+            <div class="doc-linha">
+              <span>Mão de obra</span>
+              <strong>${moeda(item.maoObra)}</strong>
+            </div>
+
+            <div class="doc-linha">
+              <span>Materiais</span>
+              <strong>${moeda(item.materiais)}</strong>
+            </div>
+
+            <div class="doc-linha">
+              <span>Outros custos</span>
+              <strong>${moeda(item.outros)}</strong>
+            </div>
+
+            <div class="doc-linha">
+              <span>Lucro (${item.lucroPercentual}%)</span>
+              <strong>${moeda(item.lucro)}</strong>
+            </div>
+
+          </div>
+
+          <div class="total-doc">
+            <span>VALOR TOTAL DO ORÇAMENTO</span>
+            <strong>${moeda(item.valorFinal)}</strong>
+          </div>
+
+        </div>
+
+        <div class="rodape-doc">
+          LS0DZ9 Serviços Gerais<br>
+          Orçamento elaborado profissionalmente.
+        </div>
+
+      </div>
+    `;
+
+    abrirTela('visualizar');
+  }
+
+  function textoCompartilhamento() {
+
+    if (!orcamentoAtual) return '';
+
+    return `*LS0DZ9 SERVIÇOS GERAIS*
+
+🧾 *ORÇAMENTO Nº ${orcamentoAtual.numero}*
+
+👤 *Cliente:* ${orcamentoAtual.cliente}
+🛠️ *Serviço:* ${orcamentoAtual.tipoServico}
+📅 *Data:* ${orcamentoAtual.data}
+
+${orcamentoAtual.quantidade ? `📐 *Quantidade/Área:* ${orcamentoAtual.quantidade}\n` : ''}
+
+${orcamentoAtual.descricao ? `📝 *Descrição:* ${orcamentoAtual.descricao}\n\n` : ''}
+
+💰 *Mão de obra:* ${moeda(orcamentoAtual.maoObra)}
+📦 *Materiais:* ${moeda(orcamentoAtual.materiais)}
+➕ *Outros custos:* ${moeda(orcamentoAtual.outros)}
+📈 *Lucro:* ${moeda(orcamentoAtual.lucro)}
+
+━━━━━━━━━━━━━━
+
+💵 *VALOR TOTAL: ${moeda(orcamentoAtual.valorFinal)}*
+
+Obrigado pela preferência!
+
+*LS0DZ9 Serviços Gerais*`;
+  }
+
+  function compartilharWhatsApp() {
+
+    if (!orcamentoAtual) return;
+
+    const texto = encodeURIComponent(textoCompartilhamento());
+
+    window.open(
+      'https://wa.me/?text=' + texto,
+      '_blank'
+    );
+  }
+
+  function compartilharOrcamento() {
+
+    const texto = textoCompartilhamento();
+
+    if (navigator.share) {
+      navigator.share({
+        title: 'Orçamento LS0DZ9',
+        text: texto
+      }).catch(function() {});
+    } else {
+      navigator.clipboard.writeText(texto)
+        .then(function() {
+          alert('Orçamento copiado para a área de transferência.');
+        });
+    }
+  }
+
+  function carregarOrcamentos() {
+
+    const lista = document.getElementById('listaOrcamentos');
+
+    const historico = JSON.parse(
+      localStorage.getItem('orcamentosLS0DZ9') || '[]'
+    );
+
+    if (historico.length === 0) {
+      lista.innerHTML =
+        '<div class="vazio">Nenhum orçamento salvo ainda.</div>';
+      return;
+    }
+
+    lista.innerHTML = '';
+
+    historico.forEach(function(item) {
+
+      lista.innerHTML += `
+
+        <div class="item-lista">
+
+          <h3>${item.tipoServico}</h3>
+
+          <p><strong>Cliente:</strong> ${item.cliente}</p>
+
+          <p><strong>${item.numero}</strong> • ${item.data}</p>
+
+          <p class="mini-valor">
+            ${moeda(item.valorFinal)}
+          </p>
+
+          <div class="botoes-item">
+
+            <button
+              class="botao-pequeno btn-ver"
+              onclick="visualizarOrcamento(${item.id})"
+            >
+              👁️ Visualizar
+            </button>
+
+            <button
+              class="botao-pequeno btn-excluir"
+              onclick="excluirOrcamento(${item.id})"
+            >
+              🗑️ Excluir
+            </button>
+
+          </div>
+
+        </div>
+      `;
+    });
+  }
+
+  function excluirOrcamento(id) {
+
+    if (!confirm('Deseja excluir este orçamento?')) return;
+
+    let historico = JSON.parse(
+      localStorage.getItem('orcamentosLS0DZ9') || '[]'
+    );
+
+    historico = historico.filter(function(item) {
+      return item.id !== id;
+    });
+
+    localStorage.setItem(
+      'orcamentosLS0DZ9',
+      JSON.stringify(historico)
+    );
+
+    carregarOrcamentos();
+  }
+
+  function limparHistorico() {
+
+    if (confirm('Deseja realmente apagar todo o histórico?')) {
+
+      localStorage.removeItem('orcamentosLS0DZ9');
+
+      carregarOrcamentos();
+    }
+  }
+
+  function limparFormulario() {
+
+    document.getElementById('cliente').value = '';
+    document.getElementById('tipoServico').value = '';
+    document.getElementById('descricao').value = '';
+    document.getElementById('quantidade').value = '';
+    document.getElementById('maoObra').value = '';
+    document.getElementById('materiais').value = '';
+    document.getElementById('outros').value = '';
+    document.getElementById('lucro').value = '20';
 
     calcular();
-  </script>
+  }
+
+  function salvarCliente() {
+
+    const nome = document.getElementById('novoCliente').value.trim();
+    const telefone = document.getElementById('telefoneCliente').value.trim();
+
+    if (!nome) {
+      alert('Digite o nome do cliente.');
+      return;
+    }
+
+    const clientes = JSON.parse(
+      localStorage.getItem('clientesLS0DZ9') || '[]'
+    );
+
+    clientes.unshift({
+      id: Date.now(),
+      nome: nome,
+      telefone: telefone
+    });
+
+    localStorage.setItem(
+      'clientesLS0DZ9',
+      JSON.stringify(clientes)
+    );
+
+    document.getElementById('novoCliente').value = '';
+    document.getElementById('telefoneCliente').value = '';
+
+    carregarClientes();
+  }
+
+  function carregarClientes() {
+
+    const lista = document.getElementById('listaClientes');
+
+    const clientes = JSON.parse(
+      localStorage.getItem('clientesLS0DZ9') || '[]'
+    );
+
+    if (clientes.length === 0) {
+      lista.innerHTML =
+        '<div class="vazio">Nenhum cliente cadastrado ainda.</div>';
+      return;
+    }
+
+    lista.innerHTML = '';
+
+    clientes.forEach(function(cliente) {
+
+      lista.innerHTML += `
+
+        <div class="item-lista">
+
+          <h3>${cliente.nome}</h3>
+
+          <p>
+            📞 ${cliente.telefone || 'Telefone não informado'}
+          </p>
+
+        </div>
+      `;
+    });
+  }
+
+  calcular();
+
+</script>
 
 </body>
 </html>
